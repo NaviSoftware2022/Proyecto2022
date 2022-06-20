@@ -1,0 +1,13 @@
+C:\Users\marce\source\repos\Login\Login\bin\Debug\Login.exe.config
+C:\Users\marce\source\repos\Login\Login\bin\Debug\Login.exe
+C:\Users\marce\source\repos\Login\Login\bin\Debug\Login.pdb
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.csprojAssemblyReference.cache
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.Form1.resources
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.Properties.Resources.resources
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.csproj.GenerateResource.cache
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.exe
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.pdb
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.form2.resources
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.form3.resources
+C:\Users\marce\source\repos\Login\Login\obj\Debug\Login.form4.resources
