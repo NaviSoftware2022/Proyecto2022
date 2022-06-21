@@ -52,9 +52,8 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
             this.textBox1.Location = new System.Drawing.Point(195, 132);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 33);
+            this.textBox1.Size = new System.Drawing.Size(158, 31);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -84,10 +83,11 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
             this.textBox2.Location = new System.Drawing.Point(195, 216);
-            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 30);
+            this.textBox2.Size = new System.Drawing.Size(158, 31);
             this.textBox2.TabIndex = 5;
+            this.textBox2.UseSystemPasswordChar = true;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
             // 
             // button1
             // 

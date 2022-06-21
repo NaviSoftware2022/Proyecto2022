@@ -29,36 +29,98 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.correoBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.contraseniaBox = new System.Windows.Forms.TextBox();
+            this.botonCorreo = new System.Windows.Forms.Button();
+            this.mostrarBox = new System.Windows.Forms.TextBox();
+            this.mostrar2Box = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(146, 26);
+            this.label1.Location = new System.Drawing.Point(174, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registro";
             // 
-            // textBox1
+            // correoBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 98);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.correoBox.Location = new System.Drawing.Point(103, 145);
+            this.correoBox.Name = "correoBox";
+            this.correoBox.Size = new System.Drawing.Size(100, 20);
+            this.correoBox.TabIndex = 1;
+            this.correoBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(111, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Ingresar Correo";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(270, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Ingresar Contrasenia";
+            // 
+            // contraseniaBox
+            // 
+            this.contraseniaBox.Location = new System.Drawing.Point(266, 145);
+            this.contraseniaBox.Name = "contraseniaBox";
+            this.contraseniaBox.Size = new System.Drawing.Size(108, 20);
+            this.contraseniaBox.TabIndex = 4;
+            // 
+            // botonCorreo
+            // 
+            this.botonCorreo.Location = new System.Drawing.Point(195, 209);
+            this.botonCorreo.Name = "botonCorreo";
+            this.botonCorreo.Size = new System.Drawing.Size(85, 23);
+            this.botonCorreo.TabIndex = 5;
+            this.botonCorreo.Text = "Ingresar";
+            this.botonCorreo.UseVisualStyleBackColor = true;
+            this.botonCorreo.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // mostrarBox
+            // 
+            this.mostrarBox.Location = new System.Drawing.Point(81, 267);
+            this.mostrarBox.Name = "mostrarBox";
+            this.mostrarBox.Size = new System.Drawing.Size(122, 20);
+            this.mostrarBox.TabIndex = 6;
+            // 
+            // mostrar2Box
+            // 
+            this.mostrar2Box.Location = new System.Drawing.Point(266, 266);
+            this.mostrar2Box.Name = "mostrar2Box";
+            this.mostrar2Box.Size = new System.Drawing.Size(100, 20);
+            this.mostrar2Box.TabIndex = 7;
             // 
             // form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 325);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.mostrar2Box);
+            this.Controls.Add(this.mostrarBox);
+            this.Controls.Add(this.botonCorreo);
+            this.Controls.Add(this.contraseniaBox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.correoBox);
             this.Controls.Add(this.label1);
             this.Name = "form4";
             this.Text = "Registro";
+            this.Load += new System.EventHandler(this.form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,6 +129,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox correoBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox contraseniaBox;
+        private System.Windows.Forms.Button botonCorreo;
+        private System.Windows.Forms.TextBox mostrarBox;
+        private System.Windows.Forms.TextBox mostrar2Box;
     }
 }

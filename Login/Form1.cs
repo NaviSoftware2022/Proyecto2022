@@ -17,7 +17,7 @@ namespace Login
         form3 admin = new form3();
         form4 registro = new form4();
 
-        class Cuenta
+        public class Cuenta
         {
 
             ArrayList Usuario = new ArrayList();
@@ -26,13 +26,14 @@ namespace Login
             public string usuario { get; set; }
             public string contraseña { get; set; }
 
+            public Cuenta() { }
 
             public Cuenta(string usuario, string contraseña)
             {
                 this.usuario = usuario;
                 this.contraseña = contraseña;
             }
-
+            
             public void Agregar()
             {
                 Usuario.Add(usuario);
@@ -106,10 +107,12 @@ namespace Login
             if (login.VerificacionUsuario())
             {
                 usuario.ShowDialog();
+                this.Hide();
             }
             else if (login.VerificacionAdmin())
             {
                 admin.ShowDialog();
+                this.Hide();
             }
             else
             {
@@ -122,6 +125,11 @@ namespace Login
         private void button2_Click(object sender, EventArgs e)
         {
             registro.ShowDialog();
+        }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
