@@ -89,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Form4_Registro.resx">
       <DependentUpon>Form4_Registro.cs</DependentUpon>
@@ -105,6 +106,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
