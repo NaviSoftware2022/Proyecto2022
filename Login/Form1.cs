@@ -19,12 +19,14 @@ namespace Login
 
         int op = 0, opAn;
 
+
+        public static ArrayList Usuario = new ArrayList();
+        public static ArrayList Contraseña = new ArrayList();
+
+
         public class Cuenta
         {
-
-            public ArrayList Usuario = new ArrayList();
-            public ArrayList Contraseña = new ArrayList();
-
+            
             public string usuario { get; set; }
             public string contraseña { get; set; }
 
@@ -96,6 +98,10 @@ namespace Login
         {
 
             Cuenta login = new Cuenta(textBox1.Text, textBox2.Text);
+
+
+
+
 
             if (login.VerificacionUsuario())
             {

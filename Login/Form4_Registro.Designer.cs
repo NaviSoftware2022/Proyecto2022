@@ -56,7 +56,7 @@
             // 
             this.correoBox.Location = new System.Drawing.Point(124, 145);
             this.correoBox.Name = "correoBox";
-            this.correoBox.Size = new System.Drawing.Size(108, 20);
+            this.correoBox.Size = new System.Drawing.Size(115, 20);
             this.correoBox.TabIndex = 1;
             this.correoBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -80,9 +80,9 @@
             // 
             // contraseniaBox
             // 
-            this.contraseniaBox.Location = new System.Drawing.Point(323, 145);
+            this.contraseniaBox.Location = new System.Drawing.Point(315, 145);
             this.contraseniaBox.Name = "contraseniaBox";
-            this.contraseniaBox.Size = new System.Drawing.Size(108, 20);
+            this.contraseniaBox.Size = new System.Drawing.Size(116, 20);
             this.contraseniaBox.TabIndex = 4;
             // 
             // botonCorreo
