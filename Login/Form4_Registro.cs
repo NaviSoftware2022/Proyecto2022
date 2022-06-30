@@ -33,15 +33,16 @@ namespace Login
         private void button1_Click(object sender, EventArgs e)
         {
             
-         
-            Cuenta registro = new Cuenta(correoBox.Text, contraseniaBox.Text);
+            string user = correoBox.Text;
+            string contra = contraseniaBox.Text;
+            Cuenta registro = new Cuenta(user, contra);
 
             registro.Agregar();
 
-            for (int x = 0; x < Usuario.Count; x++)
-            {
-                listBox1.Items.Add(Usuario[x]);
-            }
+            correoBox.Clear();
+            contraseniaBox.Clear();
+
+            
 
         }
 

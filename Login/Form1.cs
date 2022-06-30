@@ -17,11 +17,13 @@ namespace Login
         form3 admin = new form3();
         form4 registro = new form4();
 
+        int op = 0, opAn;
+
         public class Cuenta
         {
 
-            ArrayList Usuario = new ArrayList();
-            ArrayList Contraseña = new ArrayList();
+            public ArrayList Usuario = new ArrayList();
+            public ArrayList Contraseña = new ArrayList();
 
             public string usuario { get; set; }
             public string contraseña { get; set; }
@@ -115,7 +117,7 @@ namespace Login
 
         private void button2_Click(object sender, EventArgs e)
         {
-            registro.ShowDialog();
+            registro.Show();
         }
 
         private void textBox2_TextChanged_1(object sender, EventArgs e)
@@ -125,7 +127,7 @@ namespace Login
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int op=0, opAn;
+            
             Random rnd = new Random();
             opAn = op;
             op = rnd.Next(1, 4);
@@ -152,6 +154,11 @@ namespace Login
                     break;
 
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
