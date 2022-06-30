@@ -35,11 +35,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.contraseniaBox = new System.Windows.Forms.TextBox();
             this.botonCorreo = new System.Windows.Forms.Button();
-            this.mostrarBox = new System.Windows.Forms.TextBox();
-            this.mostrar2Box = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -67,9 +66,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(138, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Ingresar Correo";
+            this.label2.Text = "Ingresar Usuario";
             // 
             // label3
             // 
@@ -97,21 +96,6 @@
             this.botonCorreo.UseVisualStyleBackColor = true;
             this.botonCorreo.Click += new System.EventHandler(this.button1_Click);
             // 
-            // mostrarBox
-            // 
-            this.mostrarBox.Location = new System.Drawing.Point(124, 267);
-            this.mostrarBox.Name = "mostrarBox";
-            this.mostrarBox.Size = new System.Drawing.Size(108, 20);
-            this.mostrarBox.TabIndex = 6;
-            // 
-            // mostrar2Box
-            // 
-            this.mostrar2Box.Location = new System.Drawing.Point(323, 267);
-            this.mostrar2Box.Name = "mostrar2Box";
-            this.mostrar2Box.Size = new System.Drawing.Size(108, 20);
-            this.mostrar2Box.TabIndex = 7;
-            this.mostrar2Box.TextChanged += new System.EventHandler(this.mostrar2Box_TextChanged);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Login.Properties.Resources.publi4;
@@ -136,15 +120,23 @@
             this.timer1.Interval = 2500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(216, 250);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 12;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 369);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.mostrar2Box);
-            this.Controls.Add(this.mostrarBox);
             this.Controls.Add(this.botonCorreo);
             this.Controls.Add(this.contraseniaBox);
             this.Controls.Add(this.label3);
@@ -169,10 +161,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox contraseniaBox;
         private System.Windows.Forms.Button botonCorreo;
-        private System.Windows.Forms.TextBox mostrarBox;
-        private System.Windows.Forms.TextBox mostrar2Box;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

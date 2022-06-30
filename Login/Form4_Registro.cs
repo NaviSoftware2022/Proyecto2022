@@ -32,11 +32,16 @@ namespace Login
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Cuenta a = new Cuenta();
+            
          
-            Cuenta registro = new Cuenta(correoBox.Text,contraseniaBox.Text);
+            Cuenta registro = new Cuenta(correoBox.Text, contraseniaBox.Text);
 
             registro.Agregar();
+
+            for (int x = 0; x < Usuario.Count; x++)
+            {
+                listBox1.Items.Add(Usuario[x]);
+            }
 
         }
 
@@ -72,6 +77,11 @@ namespace Login
         }
 
         private void mostrar2Box_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

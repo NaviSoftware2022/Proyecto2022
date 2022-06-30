@@ -37,3 +37,16 @@ C:\Users\USUARIO\Desktop\main\Login\obj\Debug\Login.csproj.GenerateResource.cach
 C:\Users\USUARIO\Desktop\main\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
 C:\Users\USUARIO\Desktop\main\Login\obj\Debug\Login.exe
 C:\Users\USUARIO\Desktop\main\Login\obj\Debug\Login.pdb
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.csprojAssemblyReference.cache
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.form2.resources
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.Form1.resources
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.form3.resources
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.Properties.Resources.resources
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.form4.resources
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.csproj.GenerateResource.cache
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.exe
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\obj\Debug\Login.pdb
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\bin\Debug\Login.exe.config
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\bin\Debug\Login.exe
+C:\Users\marce\Desktop\Nueva carpeta (3)\Login\bin\Debug\Login.pdb

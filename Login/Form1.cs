@@ -48,17 +48,8 @@ namespace Login
 
             public bool VerificacionUsuario()
             {
-                int x = 0;
-                foreach (string var in Usuario)
-                {
-                    if (var == usuario) { x++; }
-                }
-                foreach (string var in Contraseña)
-                {
-                    if (var == contraseña) { x++; }
-                }
 
-                return x == 2;
+                return (Usuario.Contains(usuario) && Contraseña.Contains(contraseña));
             }
 
             public bool VerificacionAdmin()
