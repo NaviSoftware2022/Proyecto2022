@@ -35,11 +35,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.contraseniaBox = new System.Windows.Forms.TextBox();
             this.botonCorreo = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -95,14 +97,21 @@
             this.botonCorreo.UseVisualStyleBackColor = true;
             this.botonCorreo.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox2
+            // timer1
             // 
-            this.pictureBox2.Image = global::Login.Properties.Resources.publi4;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 304);
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 2500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Login.Properties.Resources.Fondo3;
+            this.pictureBox3.Location = new System.Drawing.Point(2, 1);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(552, 374);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -113,11 +122,14 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // timer1
+            // pictureBox2
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 2500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.pictureBox2.Image = global::Login.Properties.Resources.publi4;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 24);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 304);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
             // 
             // form4
             // 
@@ -132,11 +144,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.correoBox);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox3);
             this.Name = "form4";
             this.Text = "Registro";
             this.Load += new System.EventHandler(this.form4_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +167,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

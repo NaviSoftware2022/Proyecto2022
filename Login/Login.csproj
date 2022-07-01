@@ -119,5 +119,17 @@
   <ItemGroup>
     <None Include="Resources\publi4.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo1.jpg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo4.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
