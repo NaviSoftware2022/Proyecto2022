@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Login.Form1;
 
 namespace Login
 {
@@ -19,39 +20,49 @@ namespace Login
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int op = 0, opAn;
-            Random rnd = new Random();
-            opAn = op;
-            op = rnd.Next(1, 4);
-            while (opAn == op)
-            {
-                op = rnd.Next(1, 4);
-            }
-            switch (op)
-            {
-                case 1:
-                    pictureBox1.Image = Properties.Resources.publi1;
-                    pictureBox2.Image = Properties.Resources.publi1;
-                    break;
-                case 2:
-                    pictureBox1.Image = Properties.Resources.publi2;
-                    pictureBox2.Image = Properties.Resources.publi2;
-                    break;
-                case 3:
-                    pictureBox1.Image = Properties.Resources.publi3;
-                    pictureBox2.Image = Properties.Resources.publi3;
-                    break;
-                case 4:
-                    pictureBox1.Image = Properties.Resources.publi4;
-                    pictureBox2.Image = Properties.Resources.publi4;
-                    break;
-
-            }
+           
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string user = textBox1.Text;
+            string contra = textBox2.Text;
+            Cuenta registro = new Cuenta(user, contra);
+
+            registro.Agregar();
+
+            textBox1.Clear();
+            textBox2.Clear();
+
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string user = textBox1.Text;
+            string contra = textBox2.Text;
+            Cuenta registro = new Cuenta(user, contra);
+
+            registro.Eliminar();
+
+            textBox1.Clear();
+            textBox2.Clear();
+        }
+
+        private void form3_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Login
 
         public static ArrayList Usuario = new ArrayList();
         public static ArrayList Contraseña = new ArrayList();
+        
 
 
         public class Cuenta
@@ -42,14 +43,16 @@ namespace Login
             {
                 Usuario.Add(usuario);
                 Contraseña.Add(contraseña);
+               
             }
 
             public void Eliminar()
             {
                 Usuario.Remove(usuario);
                 Contraseña.Remove(contraseña);
+               
             }
-
+                  
             public bool VerificacionUsuario()
             {
 
@@ -99,19 +102,15 @@ namespace Login
 
             Cuenta login = new Cuenta(textBox1.Text, textBox2.Text);
 
-
-
-
-
             if (login.VerificacionUsuario())
             {
                 usuario.ShowDialog();
-                this.Hide();
+                
             }
             else if (login.VerificacionAdmin())
             {
                 admin.ShowDialog();
-                this.Hide();
+                
             }
             else
             {
@@ -123,7 +122,7 @@ namespace Login
 
         private void button2_Click(object sender, EventArgs e)
         {
-            registro.Show();
+            registro.ShowDialog();
         }
 
         private void textBox2_TextChanged_1(object sender, EventArgs e)
