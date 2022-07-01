@@ -44,8 +44,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -148,6 +148,7 @@
             this.button6.TabIndex = 28;
             this.button6.Text = "Eliminar";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -157,6 +158,7 @@
             this.button7.TabIndex = 27;
             this.button7.Text = "Agregar";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label5
             // 
@@ -176,19 +178,19 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "Usuario";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(566, 256);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 24;
-            // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(566, 205);
+            this.textBox4.Location = new System.Drawing.Point(566, 256);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 23;
+            this.textBox4.TabIndex = 24;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(566, 205);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 23;
             // 
             // label7
             // 
@@ -219,8 +221,8 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -258,8 +260,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

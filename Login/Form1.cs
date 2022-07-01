@@ -22,7 +22,10 @@ namespace Login
 
         public static ArrayList Usuario = new ArrayList();
         public static ArrayList Contraseña = new ArrayList();
-        
+
+        public static ArrayList UsuarioA = new ArrayList();
+        public static ArrayList ContraseñaA = new ArrayList();
+
 
 
         public class Cuenta
@@ -84,7 +87,49 @@ namespace Login
 
             public bool VerificacionAdmin()
             {
-                return usuario == "NaviSoft" && contraseña == "ROOT";
+                bool estado = false;
+                for (int x = 0; x < UsuarioA.Count; x++)
+                {
+                    String testU = Convert.ToString(UsuarioA[x]);
+                    String testC = Convert.ToString(ContraseñaA[x]);
+                    if (testU == usuario && testC == contraseña)
+                    {
+                        estado = true;
+                        break;
+                    }
+                }
+                if (usuario == "NaviSoft" && contraseña == "ROOT")
+                {
+                    return true;
+                }
+                return estado;
+            }
+
+            public void AgregarA()
+            {
+                UsuarioA.Add(usuario);
+                ContraseñaA.Add(contraseña);
+
+            }
+
+            public void EliminarA()
+            {
+                bool estado = false;
+                for (int x = 0; x < UsuarioA.Count; x++)
+                {
+                    String testU = Convert.ToString(UsuarioA[x]);
+                    String testC = Convert.ToString(ContraseñaA[x]);
+                    if (testU == usuario && testC == contraseña)
+                    {
+                        estado = true;
+                        break;
+                    }
+                }
+                if (estado)
+                {
+                    UsuarioA.Remove(usuario);
+                    ContraseñaA.Remove(contraseña);
+                }
             }
 
         }
@@ -183,6 +228,11 @@ namespace Login
                     break;
 
             }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button3_Click(object sender, EventArgs e)

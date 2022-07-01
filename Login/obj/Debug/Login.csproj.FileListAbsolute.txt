@@ -63,3 +63,16 @@ C:\Users\Joaquin Trujillo\Desktop\Xd\Login\obj\Debug\Login.csproj.GenerateResour
 C:\Users\Joaquin Trujillo\Desktop\Xd\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
 C:\Users\Joaquin Trujillo\Desktop\Xd\Login\obj\Debug\Login.exe
 C:\Users\Joaquin Trujillo\Desktop\Xd\Login\obj\Debug\Login.pdb
+C:\Users\marce\Desktop\nashee\Login\bin\Debug\Login.exe.config
+C:\Users\marce\Desktop\nashee\Login\bin\Debug\Login.exe
+C:\Users\marce\Desktop\nashee\Login\bin\Debug\Login.pdb
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.csprojAssemblyReference.cache
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.form2.resources
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.Form1.resources
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.form3.resources
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.Properties.Resources.resources
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.form4.resources
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.csproj.GenerateResource.cache
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.exe
+C:\Users\marce\Desktop\nashee\Login\obj\Debug\Login.pdb

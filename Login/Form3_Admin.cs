@@ -41,7 +41,9 @@ namespace Login
             textBox1.Clear();
             textBox2.Clear();
 
-            
+            MessageBox.Show("Cuenta Registrada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -59,6 +61,8 @@ namespace Login
 
             textBox1.Clear();
             textBox2.Clear();
+
+            MessageBox.Show("Cuenta Eliminada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void form3_Load(object sender, EventArgs e)
@@ -74,6 +78,34 @@ namespace Login
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string user = textBox3.Text;
+            string contra = textBox4.Text;
+            Cuenta registro = new Cuenta(user, contra);
+
+            registro.AgregarA();
+
+            textBox3.Clear();
+            textBox4.Clear();
+
+            MessageBox.Show("Cuenta Registrada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string user = textBox3.Text;
+            string contra = textBox4.Text;
+            Cuenta registro = new Cuenta(user, contra);
+
+            registro.EliminarA();
+
+            textBox3.Clear();
+            textBox4.Clear();
+
+            MessageBox.Show("Cuenta Eliminada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
