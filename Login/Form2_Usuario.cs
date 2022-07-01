@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+
 
 namespace Login
 {
@@ -64,6 +66,12 @@ namespace Login
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        public void Rotar ()
+        {
+            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipXY);
+            pictureBox1.Refresh();
         }
     }
 }

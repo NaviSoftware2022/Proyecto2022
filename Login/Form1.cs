@@ -48,15 +48,38 @@ namespace Login
 
             public void Eliminar()
             {
-                Usuario.Remove(usuario);
-                Contraseña.Remove(contraseña);
-               
+                bool estado = false;
+                for (int x = 0; x < Usuario.Count; x++)
+                {
+                    String testU = Convert.ToString(Usuario[x]);
+                    String testC = Convert.ToString(Contraseña[x]);
+                    if (testU == usuario && testC == contraseña)
+                    {
+                        estado = true;
+                        break;
+                    }
+                }
+                if (estado)
+                { 
+                    Usuario.Remove(usuario);
+                    Contraseña.Remove(contraseña);               
+                }
             }
-                  
+
             public bool VerificacionUsuario()
             {
-
-                return (Usuario.Contains(usuario) && Contraseña.Contains(contraseña));
+                bool estado = false;
+                for (int x = 0; x < Usuario.Count; x++)
+                {
+                    String testU = Convert.ToString(Usuario[x]);
+                    String testC = Convert.ToString(Contraseña[x]);
+                    if (testU == usuario && testC == contraseña)
+                    {
+                        estado = true;
+                        break;                                            
+                    }
+                }
+                return estado;                               
             }
 
             public bool VerificacionAdmin()
@@ -165,6 +188,8 @@ namespace Login
         {
             
         }
+
+        
     }
 }
     

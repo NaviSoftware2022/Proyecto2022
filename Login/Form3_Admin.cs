@@ -13,6 +13,7 @@ namespace Login
 {
     public partial class form3 : Form
     {
+        
         public form3()
         {
             InitializeComponent();
@@ -61,6 +62,11 @@ namespace Login
         }
 
         private void form3_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
             
         }
