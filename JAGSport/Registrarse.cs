@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using static JAGSport.Logica;
 
 namespace JAGSport
 {
@@ -18,44 +18,36 @@ namespace JAGSport
             InitializeComponent();
         }
 
-        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root;");
-
-
-        public void Registro()
-        {
-            datos.Close();
-            datos.Open();
-            MySqlCommand comando = new MySqlCommand("Insert into Usuario values(@vcorreo, @vcontrasenia)", datos);
-            comando.Parameters.AddWithValue("@vcorreo", correoBox.Text);
-            comando.Parameters.AddWithValue("@vcontrasenia", contraseniaBox.Text);
-            comando.ExecuteNonQuery();
-
-            this.Hide();
-
-        }
-
         private void botonCorreo_Click(object sender, EventArgs e)
         {
-            datos.Open();
-            MySqlCommand comando = new MySqlCommand("Select correo, contrasenia from Usuario where correo = @vcorreo AND contrasenia = @vcontrasenia", datos);
-            comando.Parameters.AddWithValue("@vcorreo", correoBox.Text);
-            comando.Parameters.AddWithValue("@vcontrasenia", contraseniaBox.Text);
 
-            MySqlDataReader lector = comando.ExecuteReader();
-            
+            Usuario user = new Usuario(correoBox.Text, contraseniaBox.Text);
 
-            if (lector.Read())
+            if (user.autenticacionUser())
             {
-                MessageBox.Show("ya existe esa Cuenta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ya existe una Cuenta con ese Correo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correoBox.Text = "";
                 contraseniaBox.Text = "";
-                datos.Close();
             }
             else
             {
-               
-                Registro();
+                user.agregarx();
+                user.agregary();
+                MessageBox.Show("Cuenta Registrada con Exito", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                correoBox.Text = "";
+                contraseniaBox.Text = "";
+
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
