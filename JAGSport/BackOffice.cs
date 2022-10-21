@@ -19,7 +19,7 @@ namespace JAGSport
         }
 
         Usuario user = new Usuario();
-        BackOfficeDeporte deporte = new BackOfficeDeporte();
+      
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -161,10 +161,5 @@ namespace JAGSport
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            deporte.ShowDialog();
-        }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static JAGSport.Logica;
+using MySql.Data.MySqlClient;
 
 namespace JAGSport
 {
@@ -17,8 +18,12 @@ namespace JAGSport
         FormLogin login = new FormLogin();
         Usuario user = new Usuario();
         Activar activar = new Activar();
+        VistaEquipos team = new VistaEquipos();
+
+        int op = 0, opAn;
 
         public static string datosLog;
+        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; Password=root");
 
         public Home()
         {
@@ -34,6 +39,10 @@ namespace JAGSport
         private void Home_Load_1(object sender, EventArgs e)
         {
             btnCuenta.Visible = false;
+
+
+         
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -95,6 +104,58 @@ namespace JAGSport
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DataTable origendatos;
+            string query = "select distinct ev.idEvento, fecha, hora, minuto, nombreEquipo, p.resultado from participa p, equipo eq, evento ev where eq.idEquipo = p.idEquipo and ev.idEvento = p.idEvento";
+            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+            origendatos = new DataTable();
+            adapter.Fill(origendatos);
+            dataGridView1.DataSource = origendatos;
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            team.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            opAn = op;
+            op = rnd.Next(1, 4);
+            string img1, img2;
+            while (opAn == op)
+            {
+                op = rnd.Next(1, 4);
+            }
+            switch (op)
+            {
+                case 1:
+                    pictureBox1.Image = Properties.Resources.publi1;
+                    pictureBox2.Image = Properties.Resources.publi1;
+                    break;
+                case 2:
+                    pictureBox1.Image = Properties.Resources.publi2;
+                    pictureBox2.Image = Properties.Resources.publi2;
+                    break;
+                case 3:
+                    pictureBox1.Image = Properties.Resources.publi3;
+                    pictureBox2.Image = Properties.Resources.publi3;
+                    break;
+                case 4:
+                    pictureBox1.Image = Properties.Resources.publi4;
+                    pictureBox2.Image = Properties.Resources.publi4;
+                    break;
+
+
+
+            }
         }
     }
 }

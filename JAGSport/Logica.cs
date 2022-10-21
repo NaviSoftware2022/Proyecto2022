@@ -11,7 +11,7 @@ namespace JAGSport
     class Logica
     {
 
-        static MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root;");
+        static MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; Password=root");
         HomeVIP userV = new HomeVIP();
 
         public class Usuario
@@ -336,27 +336,32 @@ namespace JAGSport
 
         public class Evento
         {
+            public int idEvento { get; set; }
             public string fecha { get; set; }
-            public int hora { get; set; }
-            public int idDeporte { get; set; }
+            public string hora { get; set; }
             public int resultado { get; set; }
+            public string minuto { get; set; }
+   
 
             public Evento () { }
-            public Evento (string fecha, int hora, int idDeporte, int resultado)
+            public Evento (int idEvento, string fecha, string hora, string minuto, int resultado)
             {
+                this.idEvento = idEvento;
                 this.fecha = fecha;
                 this.hora = hora;
-                this.idDeporte = idDeporte;
                 this.resultado = resultado;
+                this.minuto = minuto;
+              
 
             }
 
             public bool autenticacionEvento ()
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("Select hora, fecha from Evento where hora = @vhora AND fecha = @vfecha", datos);
+                MySqlCommand comando = new MySqlCommand("Select hora, fecha from Evento where hora = @vhora AND fecha = @vfecha AND minuto = @vminuto", datos);
                 comando.Parameters.AddWithValue("@vhora", hora);
                 comando.Parameters.AddWithValue("@vfecha", fecha);
+                comando.Parameters.AddWithValue("@vminuto", minuto);
 
                 MySqlDataReader lector = comando.ExecuteReader();
                 bool a = lector.Read();
@@ -368,10 +373,49 @@ namespace JAGSport
             public void agregarEvento ()
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("insert into Evento (hora, fecha, resultado) value (@vhora, @vfecha, @vresultado);", datos);
+                MySqlCommand comando = new MySqlCommand("insert into Evento (idEvento, hora, minuto, fecha, resultado) value (@id, @vhora, @vminuto, @vfecha, @vresultado);", datos);
+                comando.Parameters.AddWithValue("@id", idEvento);
                 comando.Parameters.AddWithValue("@vhora", hora);
                 comando.Parameters.AddWithValue("@vfecha", fecha);
                 comando.Parameters.AddWithValue("@vresultado", resultado);
+                comando.Parameters.AddWithValue("@vminuto", minuto);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public int verificarEvento ()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("select idEvento from Evento where hora = @vhora AND fecha = @vfecha AND minuto = @vminuto", datos);
+                comando.Parameters.AddWithValue("@vhora", hora);
+                comando.Parameters.AddWithValue("@vfecha", fecha);
+                comando.Parameters.AddWithValue("@vminuto", minuto);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+              
+                int a = Convert.ToInt32(lector["idEvento"]);
+                
+               
+                datos.Close();
+                return a;
+            }
+
+            public void eliminarEventox (string x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Evento where idEvento = @idEvento;", datos);
+                comando.Parameters.AddWithValue("@idEvento", x);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public void eliminarEventoy(string x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from participo where idEvento = @idEvento;", datos);
+                comando.Parameters.AddWithValue("@idEvento", x);
 
                 comando.ExecuteNonQuery();
                 datos.Close();
@@ -404,6 +448,20 @@ namespace JAGSport
 
                 return a;
             }
+
+            public bool autenticacionEquipoID (int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idDeporte from Deporte where idDeporte = @vequipo", datos);
+                comando.Parameters.AddWithValue("@vequipo", x);
+               
+
+                MySqlDataReader lector = comando.ExecuteReader();
+                bool a = lector.Read();
+                datos.Close();
+
+                return a;
+            } 
 
             public void agregarEquipo (int x) 
             {
@@ -443,6 +501,21 @@ namespace JAGSport
                 comando.ExecuteNonQuery();
                 datos.Close();
             }
+
+            public int verificarEquipo(int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idEquipo from Equipo where nombreEquipo = @n AND idDeporte = @i", datos);
+                comando.Parameters.AddWithValue("@n", nombreEquipo);
+                comando.Parameters.AddWithValue("@i", x);
+                
+
+              
+                int a = Convert.ToInt32(comando.ExecuteScalar());
+                datos.Close();
+
+                return a;
+            }
         }
 
         public class Deportista
@@ -457,6 +530,34 @@ namespace JAGSport
                 this.edad = edad;
                 this.nroCamiseta = nroCamiseta;
                 this.nombreJugador = nombreJugador;
+            }
+        }
+
+
+        public class Participa
+        {
+            public int idEquipo  { get; set; }
+            public int idEvento  { get; set; }
+            public int resultado { get; set; }
+
+            public Participa () { }
+            public Participa (int idEquipo, int idEvento, int resultado)
+            {
+                this.idEquipo = idEquipo;
+                this.idEvento = idEvento;
+                this.resultado = resultado;
+            }
+
+            public void agregarParticipa ()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into Participa value (@id1, @id2, @r);", datos);
+                comando.Parameters.AddWithValue("@id1", idEquipo);
+                comando.Parameters.AddWithValue("@id2", idEvento);
+                comando.Parameters.AddWithValue("@r", resultado);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
             }
         }
 

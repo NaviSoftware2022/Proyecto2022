@@ -1,0 +1,19 @@
+select * from participa;
+select * from Deporte;
+select * from jugador;
+select * from integra;
+select * from equipo;
+select * from realiza;
+
+insert into jugador (edad, nroCamiseta, nombreJugador) 
+value (22, 6, "Giselle Rodriguez"); 
+
+insert into integra value (6, 4);
+
+select distinct ev.idEvento, fecha, hora, minuto, nombreEquipo, p.resultado from participa p, equipo eq, evento ev where eq.idEquipo = p.idEquipo and ev.idEvento = p.idEvento;
+
+select nombreJugador, nroCamiseta, edad from integra a, jugador b where a.idEquipo = 4 and a.idJugador = b.idJugador;
+
+select nombreDeporte from deporte a, equipo b where a.idDeporte = b.idDeporte and idEquipo = 4 ;
+
+insert into juega value (4, 3);

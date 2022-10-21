@@ -74,23 +74,41 @@
     <Compile Include="Activar.Designer.cs">
       <DependentUpon>Activar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
     <Compile Include="BackOffice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BackOffice.Designer.cs">
       <DependentUpon>BackOffice.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackOfficeDeporte.cs">
+    <Compile Include="Deporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackOfficeDeporte.Designer.cs">
-      <DependentUpon>BackOfficeDeporte.cs</DependentUpon>
+    <Compile Include="Deporte.Designer.cs">
+      <DependentUpon>Deporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Equipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipos.Designer.cs">
+      <DependentUpon>Equipos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVariable\Teams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVariable\Teams.Designer.cs">
+      <DependentUpon>Teams.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -104,6 +122,12 @@
     <Compile Include="HomeVIP.Designer.cs">
       <DependentUpon>HomeVIP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jugadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jugadores.Designer.cs">
+      <DependentUpon>Jugadores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logica.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,23 +137,41 @@
     <Compile Include="Registrarse.Designer.cs">
       <DependentUpon>Registrarse.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaEquipos.Designer.cs">
+      <DependentUpon>VistaEquipos.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Activar.resx">
       <DependentUpon>Activar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackOffice.resx">
       <DependentUpon>BackOffice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BackOfficeDeporte.resx">
-      <DependentUpon>BackOfficeDeporte.cs</DependentUpon>
+    <EmbeddedResource Include="Deporte.resx">
+      <DependentUpon>Deporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipos.resx">
+      <DependentUpon>Equipos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVariable\Teams.resx">
+      <DependentUpon>Teams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeVIP.resx">
       <DependentUpon>HomeVIP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jugadores.resx">
+      <DependentUpon>Jugadores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="Registrarse.resx">
       <DependentUpon>Registrarse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaEquipos.resx">
+      <DependentUpon>VistaEquipos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -186,6 +231,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publi4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

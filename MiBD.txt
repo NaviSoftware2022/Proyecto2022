@@ -1,0 +1,169 @@
+-- ENTIDADES
+
+create table Usuario ( 
+correo varchar(30) primary key,
+contrasenia varchar(30)
+);
+
+create table admin (
+correo varchar(30) Primary key,
+contrasenia varchar(30) not null,
+codigoAdmin varchar(30),
+foreign key (correo) references Usuario (correo)
+);
+
+create table Miembro (
+correo varchar(30) primary key,
+contrasenia varchar(30),
+Membresia varchar(2),
+constraint foreign key (correo) references Usuario (correo)
+);
+
+create table UsuarioNoM (
+correo varchar(30) primary key,
+contrasenia varchar(30),
+constraint foreign key (correo) references Usuario (correo)
+);
+
+create table Publicidad (
+idPublicidad int auto_increment primary key,
+empresa varchar(30)
+);
+
+create table Deporte (
+idDeporte int auto_increment primary key,
+nombreDeporte varchar(30) not null 
+);
+
+
+create table Jugador (
+idJugador int auto_increment primary key,
+edad int,
+nroCamiseta int,
+nombreJugador varchar(30)
+);
+
+
+
+create table Evento (
+idEvento int auto_increment primary key,
+hora int, 
+minuto int,
+fecha date,
+resultado int
+);
+
+create table Lugar (
+idLugar int auto_increment primary key, 
+nombreLugar varchar(30),
+pais varchar(30)
+);
+
+
+create table Puntuacion (
+idPuntuacion int auto_increment primary key
+);
+
+create table Puntos ( 
+idPuntuacion int primary key,
+puntaje int,
+constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
+);
+
+create table Distancia (
+idPuntuacion int primary key,
+kilometros int, 
+metros int,
+constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
+);
+
+create table Tiempo (
+idPuntuacion int primary key, 
+minutos int, 
+segundos int,
+constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
+);
+
+
+create table Equipo (
+idEquipo int auto_increment,
+nombreEquipo varchar(30), 
+idDeporte int,
+Primary key(idEquipo),
+constraint foreign key (idDeporte) references Deporte (idDeporte)
+);
+
+-- RELACIONES 
+
+
+create table Tiene (
+correo varchar(30),
+idPublicidad int,
+primary key(correo, idPublicidad),
+constraint foreign key (correo) references UsuarioNoM (correo),
+constraint foreign key (idPublicidad) references Publicidad (idPublicidad)
+);
+
+create table Integra (
+idEquipo int,
+idJugador int,
+Primary key(idEquipo, idJugador),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idJugador) references Jugador (idJugador)
+);
+
+create table Participa (
+idEquipo int, 
+idEvento int,
+resultado int,
+primary key(idEquipo, idEvento),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idEvento) references Evento (idEvento) 
+);
+
+create table Pasa (
+idEvento int primary key,
+idLugar int,
+constraint foreign key (idEvento) references Evento (idEvento),
+constraint foreign key (idLugar) references Lugar (idLugar)
+);
+
+create table Realiza (
+idEvento int primary key,
+idDeporte int,
+constraint foreign key (idEvento) references Evento (idEvento),
+constraint foreign key (idDeporte) references Deporte (idDeporte)
+);
+
+create table Suscribe (
+correo varchar(30),
+idEvento int,
+primary key(correo, idEvento),
+constraint foreign key (correo) references Miembro (correo),
+constraint foreign key (idEvento) references Evento (idEvento)
+);
+
+create table juega (
+idEquipo int, 
+idDeporte int,
+primary key(idEquipo, idDeporte),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idDeporte) references Deporte (idDeporte) 
+);
+
+-- DML
+
+SET SQL_SAFE_UPDATES = 0;
+
+insert into Usuario values ("test", 123);
+insert into Usuario values ("alejobuc@gmail.com", 123);
+insert into Usuario values ("joaquin@gmail.com", 456);
+
+insert into Usuario value ("root@gmail.com", "root" );
+insert into admin value ("root@gmail.com", "root", 1);
+
+
+
+-- select distinct ev.idEvento, fecha, hora, minuto, nombreEquipo, p.resultado from participa p, equipo eq, evento ev where eq.idEquipo = p.idEquipo and ev.idEvento = p.idEvento;
+
+
