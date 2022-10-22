@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static JAGSport.FormLogin;
+using MySql.Data.MySqlClient;
 
 namespace JAGSport
 {
     public partial class HomeVIP : Form
     {
-
+        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root;");
 
         Activar activar = new Activar();
         FormLogin login = new FormLogin();
@@ -87,6 +88,17 @@ namespace JAGSport
             {
                 button2.Text = datosLog;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataTable origendatos;
+            string query = "select distinct ev.idEvento, fecha, hora, minuto, nombreEquipo, p.resultado from participa p, equipo eq, evento ev where eq.idEquipo = p.idEquipo and ev.idEvento = p.idEvento";
+            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+            origendatos = new DataTable();
+            adapter.Fill(origendatos);
+            dataGridView1.DataSource = origendatos;
         }
     }
 }

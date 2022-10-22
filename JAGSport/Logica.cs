@@ -160,8 +160,9 @@ namespace JAGSport
                 MySqlDataReader lector = comando.ExecuteReader();
                 bool a = lector.Read();
 
-                if(a) { 
-                JAGSport.HomeVIP.datosLog = lector["correo"].ToString();
+                if (a)
+                {
+                    JAGSport.HomeVIP.datosLog = lector["correo"].ToString();
                 }
                 datos.Close();
 
@@ -211,7 +212,7 @@ namespace JAGSport
 
             }
 
-          
+
 
 
         }
@@ -283,7 +284,7 @@ namespace JAGSport
             }
 
 
-            public bool autenticacionDeporte ()
+            public bool autenticacionDeporte()
             {
                 datos.Open();
                 MySqlCommand comando = new MySqlCommand("Select nombreDeporte from Deporte where nombreDeporte = @vnombre", datos);
@@ -297,7 +298,7 @@ namespace JAGSport
                 return a;
             }
 
-            public void agregarDeporte ()
+            public void agregarDeporte()
             {
                 datos.Open();
                 MySqlCommand comando = new MySqlCommand("insert into Deporte (nombreDeporte) value (@vdeporte);", datos);
@@ -307,7 +308,7 @@ namespace JAGSport
                 datos.Close();
             }
 
-            public List<string> mostrarDeporte ()
+            public List<string> mostrarDeporte()
             {
                 datos.Open();
                 MySqlCommand comando = new MySqlCommand("select idDeporte, nombreDeporte from Deporte", datos);
@@ -316,30 +317,216 @@ namespace JAGSport
                 List<string> lista = new List<string>();
                 while (lector.Read())
                 {
-                    lista.Add(Convert.ToString(lector["idDeporte"])+" - "+ lector["nombreDeporte"]);
+                    lista.Add(Convert.ToString(lector["idDeporte"]) + " - " + lector["nombreDeporte"]);
                 }
+                lista.Sort();
                 datos.Close();
                 return lista;
             }
 
-            
+            public void eliminarDeporte()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Deporte where nombreDeporte = @vnombre", datos);
+                comando.Parameters.AddWithValue("@vnombre", nombreDeporte);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+        }
+
+        public class Evento
+        {
+            public int idEvento { get; set; }
+            public string fecha { get; set; }
+            public string hora { get; set; }
+            public int resultado { get; set; }
+            public string minuto { get; set; }
+
+
+            public Evento() { }
+            public Evento(int idEvento, string fecha, string hora, string minuto, int resultado)
+            {
+                this.idEvento = idEvento;
+                this.fecha = fecha;
+                this.hora = hora;
+                this.resultado = resultado;
+                this.minuto = minuto;
+
+
+            }
+
+            public bool autenticacionEvento()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select hora, fecha from Evento where hora = @vhora AND fecha = @vfecha AND minuto = @vminuto", datos);
+                comando.Parameters.AddWithValue("@vhora", hora);
+                comando.Parameters.AddWithValue("@vfecha", fecha);
+                comando.Parameters.AddWithValue("@vminuto", minuto);
+
+                MySqlDataReader lector = comando.ExecuteReader();
+                bool a = lector.Read();
+                datos.Close();
+
+                return a;
+            }
+
+            public void agregarEvento()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into Evento (idEvento, hora, minuto, fecha, resultado) value (@id, @vhora, @vminuto, @vfecha, @vresultado);", datos);
+                comando.Parameters.AddWithValue("@id", idEvento);
+                comando.Parameters.AddWithValue("@vhora", hora);
+                comando.Parameters.AddWithValue("@vfecha", fecha);
+                comando.Parameters.AddWithValue("@vresultado", resultado);
+                comando.Parameters.AddWithValue("@vminuto", minuto);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public int verificarEvento()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("select idEvento from Evento where hora = @vhora AND fecha = @vfecha AND minuto = @vminuto", datos);
+                comando.Parameters.AddWithValue("@vhora", hora);
+                comando.Parameters.AddWithValue("@vfecha", fecha);
+                comando.Parameters.AddWithValue("@vminuto", minuto);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+
+                int a = Convert.ToInt32(lector["idEvento"]);
+
+
+                datos.Close();
+                return a;
+            }
+
+            public void eliminarEventox(string x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Evento where idEvento = @idEvento;", datos);
+                comando.Parameters.AddWithValue("@idEvento", x);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public void eliminarEventoy(string x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from participo where idEvento = @idEvento;", datos);
+                comando.Parameters.AddWithValue("@idEvento", x);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
 
 
         }
 
+
         public class Equipo
         {
-         
+            public string nombreEquipo { get; set; }
+
+            public Equipo() { }
+            public Equipo(string nombreEquipo)
+            {
+                this.nombreEquipo = nombreEquipo;
+            }
+
+            public bool autenticacionEquipo(int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select nombreEquipo, idDeporte from Equipo where nombreEquipo = @vequipo AND idDeporte = @vdeporte", datos);
+                comando.Parameters.AddWithValue("@vequipo", nombreEquipo);
+                comando.Parameters.AddWithValue("@vdeporte", x);
+
+                MySqlDataReader lector = comando.ExecuteReader();
+                bool a = lector.Read();
+                datos.Close();
+
+                return a;
+            }
+
+            public bool autenticacionEquipoID(int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idDeporte from Deporte where idDeporte = @vequipo", datos);
+                comando.Parameters.AddWithValue("@vequipo", x);
+
+
+                MySqlDataReader lector = comando.ExecuteReader();
+                bool a = lector.Read();
+                datos.Close();
+
+                return a;
+            }
+
+            public void agregarEquipo(int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into Equipo (idEvento, idDeporte, nombreEquipo) value (@vevento, @vdeporte, @vnombre);", datos);
+                comando.Parameters.AddWithValue("@vevento", 1);
+                comando.Parameters.AddWithValue("@vdeporte", x);
+                comando.Parameters.AddWithValue("@vnombre", nombreEquipo);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public List<string> mostrarEquipo()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("select idEquipo, nombreEquipo, nombreDeporte from Equipo a, Deporte b where a.idDeporte = b.idDeporte", datos);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                List<string> lista = new List<string>();
+                while (lector.Read())
+                {
+                    lista.Add(Convert.ToString(lector["idEquipo"]) + " - " + lector["nombreEquipo"] + " - " + lector["nombreDeporte"]);
+                }
+                lista.Sort();
+                datos.Close();
+                return lista;
+            }
+
+            public void eliminarEquipo(int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Equipo where idDeporte = @vdeporte AND nombreEquipo = @vnombre;", datos);
+                comando.Parameters.AddWithValue("@vdeporte", x);
+                comando.Parameters.AddWithValue("@vnombre", nombreEquipo);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public int verificarEquipo(int x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idEquipo from Equipo where nombreEquipo = @n AND idDeporte = @i", datos);
+                comando.Parameters.AddWithValue("@n", nombreEquipo);
+                comando.Parameters.AddWithValue("@i", x);
+
+
+
+                int a = Convert.ToInt32(comando.ExecuteScalar());
+                datos.Close();
+
+                return a;
+            }
         }
 
         public class Deportista
         {
             public int edad { get; set; }
             public int nroCamiseta { get; set; }
-            public string nombreJugador{ get; set; }
+            public string nombreJugador { get; set; }
 
-            public Deportista () { }
-            public Deportista (int edad, int nroCamiseta, string nombreJugador)
+            public Deportista() { }
+            public Deportista(int edad, int nroCamiseta, string nombreJugador)
             {
                 this.edad = edad;
                 this.nroCamiseta = nroCamiseta;
@@ -347,11 +534,140 @@ namespace JAGSport
             }
         }
 
-        public class Evento
-        {
-            public int hora { get; set; }
-            public int fecha { get; set; }
 
+        public class Participa
+        {
+            public int idEquipo { get; set; }
+            public int idEvento { get; set; }
+            public int resultado { get; set; }
+
+            public Participa() { }
+            public Participa(int idEquipo, int idEvento, int resultado)
+            {
+                this.idEquipo = idEquipo;
+                this.idEvento = idEvento;
+                this.resultado = resultado;
+            }
+
+            public void agregarParticipa()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into Participa value (@id1, @id2, @r);", datos);
+                comando.Parameters.AddWithValue("@id1", idEquipo);
+                comando.Parameters.AddWithValue("@id2", idEvento);
+                comando.Parameters.AddWithValue("@r", resultado);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+
+        }
+
+        public class Jugador
+        {
+            public string nombre { get; set; }
+            public string apellido { get; set; }
+            public int edad { get; set; }
+            public int nroCamiseta { get; set; }
+            public string nacionalidad { get; set; }
+            public string posicion { get; set; }
+            public string equipo { get; set; }
+            public string nacimiento { get; set; }
+
+            public Jugador() { }
+            public Jugador(string nombre, string apellido, int edad, int nroCamiseta, string nacionalidad, string posicion, string equipo, string nacimiento)
+            {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.edad = edad;
+                this.nroCamiseta = nroCamiseta;
+                this.nacionalidad = nacionalidad;
+                this.posicion = posicion;
+                this.equipo = equipo;
+                this.nacimiento = nacimiento;
+            }
+
+            public void AgregarJugador()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into jugador (nombre, apellido, edad, nroCamiseta, nacionalidad, posicion, equipo, nacimiento) value (@a, @b, @c, @d, @e, @f, @g, @h);", datos);
+                comando.Parameters.AddWithValue("@a", nombre);
+                comando.Parameters.AddWithValue("@b", apellido);
+                comando.Parameters.AddWithValue("@c", edad);
+                comando.Parameters.AddWithValue("@d", nroCamiseta);
+                comando.Parameters.AddWithValue("@e", nacionalidad);
+                comando.Parameters.AddWithValue("@f", posicion);
+                comando.Parameters.AddWithValue("@g", equipo);
+                comando.Parameters.AddWithValue("@h", nacimiento);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+
+
+        }
+        public class Publicidad1
+        {
+
+
+            public string Nombre { get; set; }
+            public string Imagen { get; set; }
+
+            public Publicidad1() { }
+            public Publicidad1(string Nombre, string Imagen)
+            {
+
+                this.Nombre = Nombre;
+                this.Imagen = Imagen;
+            }
+
+
+
+            public void agregarPublicidad1()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into Publicidad1 (Nombre, Imagen) value (@nom, @img);", datos);
+                comando.Parameters.AddWithValue("@nom", Nombre);
+                comando.Parameters.AddWithValue("@img", Imagen);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public void eliminarPublicidad1()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Publicidad1 where Nombre = @nom", datos);
+                comando.Parameters.AddWithValue("@nom", this.Nombre);
+                comando.Parameters.AddWithValue("@img", this.Imagen);
+
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public List<string> mostrarPublicidad1()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select Imagen from Publicidad1", datos);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                List<string> listaPubli = new List<string>();
+                while (lector.Read())
+                {
+                    listaPubli.Add(Convert.ToString(lector["Imagen"]));
+                    listaPubli.Sort();
+
+
+
+
+                }
+                datos.Close();
+                return listaPubli;
+
+            }
         }
     }
 }

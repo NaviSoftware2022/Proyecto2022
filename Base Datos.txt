@@ -1,0 +1,11 @@
+Jugador:
+	Falta:
+		ID EQUIPO
+		POSICION (usar default) 
+		NACIONALIDAD
+		NACIMIENTO
+		
+Equipo: 
+	Falta: 
+		NACIONALIDAD O CLUB?
+		
