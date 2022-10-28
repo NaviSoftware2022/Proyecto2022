@@ -19,7 +19,7 @@ namespace JAGSport
             InitializeComponent();
         }
 
-        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; Password=root");
+        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root;");
         Teams team = new Teams();
 
         private void VistaEquipos_Load(object sender, EventArgs e)

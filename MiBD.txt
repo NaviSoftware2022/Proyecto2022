@@ -1,4 +1,7 @@
+
+
 -- ENTIDADES
+
 
 create table Usuario ( 
 correo varchar(30) primary key,
@@ -35,22 +38,16 @@ idDeporte int auto_increment primary key,
 nombreDeporte varchar(30) not null 
 );
 
-
-create table Jugador (
-idJugador int auto_increment primary key,
-edad int,
-nroCamiseta int,
-nombreJugador varchar(30)
-);
-
-
-
 create table Evento (
-idEvento int auto_increment primary key,
-hora int, 
-minuto int,
+idEvento int auto_increment,
+hora time, 
 fecha date,
-resultado int
+nombreDeporte varchar(30),
+equipo1 varchar(30),
+resultado1 int,
+equipo2 varchar(30),
+resultado2 int,
+primary key(idEvento, hora, fecha, equipo1, equipo2)
 );
 
 create table Lugar (
@@ -58,7 +55,6 @@ idLugar int auto_increment primary key,
 nombreLugar varchar(30),
 pais varchar(30)
 );
-
 
 create table Puntuacion (
 idPuntuacion int auto_increment primary key
@@ -84,17 +80,39 @@ segundos int,
 constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
 );
 
-
 create table Equipo (
 idEquipo int auto_increment,
 nombreEquipo varchar(30), 
-idDeporte int,
-Primary key(idEquipo),
-constraint foreign key (idDeporte) references Deporte (idDeporte)
+deporteName varchar(30),
+Primary key(idEquipo)
 );
 
--- RELACIONES 
 
+create table Jugador (
+idJugador int auto_increment,
+nombre varchar(50),
+apellido varchar(50),
+edad int,
+nroCamiseta int,
+nacionalidad varchar(50),
+posicion char(50),
+equipo varchar(30),
+nacimiento date,
+primary key (idJugador)
+);
+
+select * from Equipo;
+insert into Integra (idJugador, idEquipo) value (8, 7);
+-- alter table jugador drop posicion;
+-- jugadoralter table Jugador add posicion char(30) CHECK (posicion in ("DEL", "DEF", "MED", "POR"));
+
+create table Publicidad1(
+IdImagen int auto_increment primary key,
+Nombre varchar(100),
+Imagen varchar(1000));
+
+-- RELACIONES 
+select nombre, apellido, nacionalidad from Jugador;
 
 create table Tiene (
 correo varchar(30),
@@ -115,10 +133,11 @@ constraint foreign key (idJugador) references Jugador (idJugador)
 create table Participa (
 idEquipo int, 
 idEvento int,
-resultado int,
-primary key(idEquipo, idEvento),
+idDeporte int,
+primary key(idEquipo, idEvento, idDeporte),
 constraint foreign key (idEquipo) references Equipo (idEquipo),
-constraint foreign key (idEvento) references Evento (idEvento) 
+constraint foreign key (idEvento) references Evento (idEvento),
+constraint foreign key (idDeporte) references Deporte (idDeporte) 
 );
 
 create table Pasa (
@@ -126,13 +145,6 @@ idEvento int primary key,
 idLugar int,
 constraint foreign key (idEvento) references Evento (idEvento),
 constraint foreign key (idLugar) references Lugar (idLugar)
-);
-
-create table Realiza (
-idEvento int primary key,
-idDeporte int,
-constraint foreign key (idEvento) references Evento (idEvento),
-constraint foreign key (idDeporte) references Deporte (idDeporte)
 );
 
 create table Suscribe (
@@ -151,6 +163,7 @@ constraint foreign key (idEquipo) references Equipo (idEquipo),
 constraint foreign key (idDeporte) references Deporte (idDeporte) 
 );
 
+
 -- DML
 
 SET SQL_SAFE_UPDATES = 0;
@@ -159,11 +172,40 @@ insert into Usuario values ("test", 123);
 insert into Usuario values ("alejobuc@gmail.com", 123);
 insert into Usuario values ("joaquin@gmail.com", 456);
 
-insert into Usuario value ("root@gmail.com", "root" );
-insert into admin value ("root@gmail.com", "root", 1);
+insert into Usuario value ("root", "root" );
+insert into admin value ("root", "root", 1);
 
+
+insert into Deporte (nombreDeporte) value ("Futbol") ;
+
+insert into Equipo (nombreEquipo) value ("Real Madrid");
 
 
 -- select distinct ev.idEvento, fecha, hora, minuto, nombreEquipo, p.resultado from participa p, equipo eq, evento ev where eq.idEquipo = p.idEquipo and ev.idEvento = p.idEvento;
 
+-- insert into equipo (nombreEquipo, idDeporte) values ("barcelona",1);
 
+-- insert into deporte (nombreDeporte) values ("Futbol");
+
+-- select * from equipo;
+delete from juega;
+delete from juega where idDeporte = 2;
+delete from equipo where deporteName = "golf";
+select * from equipo;
+select * from Juega;
+select * from Jugador;
+select * from Evento;
+select * from Participa;
+
+Select idJugador from Jugador where nombre = "Alejo" AND apellido = "Lacroix" AND nacionalidad = "URU";
+
+
+select nombreEquipo from Equipo where deporteName = "futbol";
+
+select idEvento, fecha, hora, equipo1, equipo2, nombreDeporte from Evento;
+
+select distinct idEvento from participa where idEquipo = 31;
+
+select nombre, nroCamiseta, edad from integra a, jugador b where a.idEquipo = "7" and a.idJugador = b.idJugador;
+
+select deporteName from Equipo where idEquipo = 7;

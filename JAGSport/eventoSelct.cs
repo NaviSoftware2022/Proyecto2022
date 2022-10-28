@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace JAGSport
 {
-    public partial class Deporte : Form
+    public partial class eventoSelct : Form
     {
-        public Deporte()
+        public eventoSelct()
         {
             InitializeComponent();
         }
+        eventoPasadoBackOffice pasado = new eventoPasadoBackOffice();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -25,6 +26,7 @@ namespace JAGSport
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
+            pasado.ShowDialog();
         }
     }
 }

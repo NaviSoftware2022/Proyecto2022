@@ -20,10 +20,10 @@ namespace JAGSport
         Activar activar = new Activar();
         VistaEquipos team = new VistaEquipos();
 
-        int op = 0, opAn;
+        
 
         public static string datosLog;
-        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; Password=root");
+        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root");
 
         public Home()
         {
@@ -126,36 +126,33 @@ namespace JAGSport
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            opAn = op;
-            op = rnd.Next(1, 4);
-            string img1, img2;
-            while (opAn == op)
-            {
-                op = rnd.Next(1, 4);
-            }
-            switch (op)
-            {
-                case 1:
-                    pictureBox1.Image = Properties.Resources.publi1;
-                    pictureBox2.Image = Properties.Resources.publi1;
-                    break;
-                case 2:
-                    pictureBox1.Image = Properties.Resources.publi2;
-                    pictureBox2.Image = Properties.Resources.publi2;
-                    break;
-                case 3:
-                    pictureBox1.Image = Properties.Resources.publi3;
-                    pictureBox2.Image = Properties.Resources.publi3;
-                    break;
-                case 4:
-                    pictureBox1.Image = Properties.Resources.publi4;
-                    pictureBox2.Image = Properties.Resources.publi4;
-                    break;
 
 
+            Random random = new Random();
+
+
+            List<string> listaPubli = new List<string>();
+
+
+            Publicidad1 publicidad = new Publicidad1();
+
+
+            listaPubli = publicidad.mostrarPublicidad1();
+
+            if(listaPubli.Count != 0) { 
+
+
+            int largo = listaPubli.Count;
+
+            int azar = random.Next(0, largo);
+
+
+            pictureBox3.Image = Image.FromFile(listaPubli[azar]);
 
             }
+
+
+
         }
     }
 }

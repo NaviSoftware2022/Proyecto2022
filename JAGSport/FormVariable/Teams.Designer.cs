@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.nameTeam = new System.Windows.Forms.Label();
-            this.idTeam = new System.Windows.Forms.Label();
             this.deporteTeam = new System.Windows.Forms.Label();
             this.playersTeam = new System.Windows.Forms.Label();
             this.gridTeam = new System.Windows.Forms.DataGridView();
@@ -40,27 +39,17 @@
             // 
             this.nameTeam.AutoSize = true;
             this.nameTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTeam.Location = new System.Drawing.Point(22, 28);
+            this.nameTeam.Location = new System.Drawing.Point(33, 28);
             this.nameTeam.Name = "nameTeam";
             this.nameTeam.Size = new System.Drawing.Size(138, 25);
             this.nameTeam.TabIndex = 0;
             this.nameTeam.Text = "NAME TEAM";
             // 
-            // idTeam
-            // 
-            this.idTeam.AutoSize = true;
-            this.idTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idTeam.Location = new System.Drawing.Point(3, 35);
-            this.idTeam.Name = "idTeam";
-            this.idTeam.Size = new System.Drawing.Size(19, 16);
-            this.idTeam.TabIndex = 1;
-            this.idTeam.Text = "id";
-            // 
             // deporteTeam
             // 
             this.deporteTeam.AutoSize = true;
             this.deporteTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deporteTeam.Location = new System.Drawing.Point(63, 53);
+            this.deporteTeam.Location = new System.Drawing.Point(55, 53);
             this.deporteTeam.Name = "deporteTeam";
             this.deporteTeam.Size = new System.Drawing.Size(51, 20);
             this.deporteTeam.TabIndex = 2;
@@ -92,7 +81,6 @@
             this.Controls.Add(this.gridTeam);
             this.Controls.Add(this.playersTeam);
             this.Controls.Add(this.deporteTeam);
-            this.Controls.Add(this.idTeam);
             this.Controls.Add(this.nameTeam);
             this.Name = "Teams";
             this.Text = "Teams";
@@ -106,7 +94,6 @@
         #endregion
 
         private System.Windows.Forms.Label nameTeam;
-        private System.Windows.Forms.Label idTeam;
         private System.Windows.Forms.Label deporteTeam;
         private System.Windows.Forms.Label playersTeam;
         private System.Windows.Forms.DataGridView gridTeam;
