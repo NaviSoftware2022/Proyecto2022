@@ -20,7 +20,7 @@ namespace JAGSport
             InitializeComponent();
         }
 
-        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root;");
+        MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root;");
         
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace JAGSport
             }
             else
             {
-                File.Copy(txtRuta.Text, Path.Combine(@"C:\Users\USUARIO\OneDrive\Escritorio\Nueva carpeta (2)\JAGSport\Publicidad\", Path.GetFileName(txtRuta.Text)), true);
+                File.Copy(txtRuta.Text, Path.Combine(@"C:\Users\marce\Desktop\Proyecto UTU\JAGSport\Publicidad\", Path.GetFileName(txtRuta.Text)), true);
                 label2.Text = "La publicidad ha sido agregada";
 
                 

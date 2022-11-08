@@ -86,6 +86,7 @@
     <Compile Include="BackOffice.Designer.cs">
       <DependentUpon>BackOffice.cs</DependentUpon>
     </Compile>
+    <Compile Include="correos.cs" />
     <Compile Include="DeporteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +105,12 @@
     <Compile Include="eventoPasadoBackOffice.Designer.cs">
       <DependentUpon>eventoPasadoBackOffice.cs</DependentUpon>
     </Compile>
+    <Compile Include="eventoProximoBackOffice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eventoProximoBackOffice.Designer.cs">
+      <DependentUpon>eventoProximoBackOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="eventoSelct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +122,24 @@
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVariable\eventosPasados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVariable\eventosPasados.Designer.cs">
+      <DependentUpon>eventosPasados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVariable\eventosProximos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVariable\eventosProximos.Designer.cs">
+      <DependentUpon>eventosProximos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVariable\PlayerStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVariable\PlayerStats.Designer.cs">
+      <DependentUpon>PlayerStats.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVariable\Teams.cs">
       <SubType>Form</SubType>
@@ -161,6 +186,18 @@
     <Compile Include="VistaEquipos.Designer.cs">
       <DependentUpon>VistaEquipos.cs</DependentUpon>
     </Compile>
+    <Compile Include="vistaEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistaEventos.Designer.cs">
+      <DependentUpon>vistaEventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistaJugadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistaJugadores.Designer.cs">
+      <DependentUpon>vistaJugadores.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Activar.resx">
       <DependentUpon>Activar.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,11 +216,23 @@
     <EmbeddedResource Include="eventoPasadoBackOffice.resx">
       <DependentUpon>eventoPasadoBackOffice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="eventoProximoBackOffice.resx">
+      <DependentUpon>eventoProximoBackOffice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="eventoSelct.resx">
       <DependentUpon>eventoSelct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVariable\eventosPasados.resx">
+      <DependentUpon>eventosPasados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVariable\eventosProximos.resx">
+      <DependentUpon>eventosProximos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVariable\PlayerStats.resx">
+      <DependentUpon>PlayerStats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVariable\Teams.resx">
       <DependentUpon>Teams.cs</DependentUpon>
@@ -215,6 +264,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaEquipos.resx">
       <DependentUpon>VistaEquipos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistaEventos.resx">
+      <DependentUpon>vistaEventos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistaJugadores.resx">
+      <DependentUpon>vistaJugadores.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

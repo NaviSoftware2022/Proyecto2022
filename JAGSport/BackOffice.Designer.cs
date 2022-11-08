@@ -40,9 +40,7 @@
             this.btnAdmin2 = new System.Windows.Forms.Button();
             this.btnMiembro2 = new System.Windows.Forms.Button();
             this.btnNor2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.passwordTxt2 = new System.Windows.Forms.TextBox();
             this.correoTxt2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -150,7 +148,7 @@
             // 
             this.btnAdmin2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAdmin2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmin2.Location = new System.Drawing.Point(255, 468);
+            this.btnAdmin2.Location = new System.Drawing.Point(255, 450);
             this.btnAdmin2.Name = "btnAdmin2";
             this.btnAdmin2.Size = new System.Drawing.Size(91, 28);
             this.btnAdmin2.TabIndex = 16;
@@ -162,7 +160,7 @@
             // 
             this.btnMiembro2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnMiembro2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMiembro2.Location = new System.Drawing.Point(141, 468);
+            this.btnMiembro2.Location = new System.Drawing.Point(141, 450);
             this.btnMiembro2.Name = "btnMiembro2";
             this.btnMiembro2.Size = new System.Drawing.Size(91, 28);
             this.btnMiembro2.TabIndex = 15;
@@ -174,24 +172,13 @@
             // 
             this.btnNor2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNor2.Location = new System.Drawing.Point(30, 468);
+            this.btnNor2.Location = new System.Drawing.Point(30, 450);
             this.btnNor2.Name = "btnNor2";
             this.btnNor2.Size = new System.Drawing.Size(91, 28);
             this.btnNor2.TabIndex = 14;
             this.btnNor2.Text = "Usuario Normal\r\n";
             this.btnNor2.UseVisualStyleBackColor = false;
             this.btnNor2.Click += new System.EventHandler(this.btnNor2_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(58, 417);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 16);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Contraseña";
             // 
             // label6
             // 
@@ -203,13 +190,6 @@
             this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 12;
             this.label6.Text = "Correo";
-            // 
-            // passwordTxt2
-            // 
-            this.passwordTxt2.Location = new System.Drawing.Point(141, 416);
-            this.passwordTxt2.Name = "passwordTxt2";
-            this.passwordTxt2.Size = new System.Drawing.Size(100, 20);
-            this.passwordTxt2.TabIndex = 11;
             // 
             // correoTxt2
             // 
@@ -232,6 +212,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnAdmin2);
+            this.panel1.Controls.Add(this.btnNor2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnMiembro2);
             this.panel1.Controls.Add(this.label1);
@@ -257,11 +239,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 576);
-            this.Controls.Add(this.btnAdmin2);
-            this.Controls.Add(this.btnNor2);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.passwordTxt2);
             this.Controls.Add(this.correoTxt2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnAdmin1);
@@ -296,9 +274,7 @@
         private System.Windows.Forms.Button btnAdmin2;
         private System.Windows.Forms.Button btnMiembro2;
         private System.Windows.Forms.Button btnNor2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox passwordTxt2;
         private System.Windows.Forms.TextBox correoTxt2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;

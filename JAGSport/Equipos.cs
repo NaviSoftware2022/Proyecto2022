@@ -28,6 +28,7 @@ namespace JAGSport
 
         private void Equipos_Load(object sender, EventArgs e)
         {
+            listaDeportes.Items.Clear();
             List<string> listaDeporte = new List<string>();
             listaDeporte = deporte.mostrarDeporte();
 
@@ -37,7 +38,7 @@ namespace JAGSport
             }
 
             DataTable origendatos;
-            string query = "select nombreEquipo, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
+            string query = "select nombreEquipo, zona, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
             MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
             origendatos = new DataTable();
@@ -48,16 +49,18 @@ namespace JAGSport
         private void button2_Click(object sender, EventArgs e)
         {
            
-            if(nameTeam.Text != "" && listaDeportes.SelectedIndex.ToString() != null)
+            if(nameTeam.Text != "" && listaDeportes.SelectedIndex.ToString() != null && zonaT.Text != "")
             {
                 string name = nameTeam.Text.ToLower();
-                Equipo team = new Equipo(name);
+                string zona = zonaT.Text.ToLower();
+                Equipo team = new Equipo(name, zona);
                 Deporte sport = new Deporte(listaDeportes.SelectedItem.ToString());
 
                 if (!team.autenticacionEquipo())
                 {
                     team.agregarEquipo(listaDeportes.SelectedItem.ToString());
                     nameTeam.Text = "";
+                    zonaT.Text = "";
                     listaDeportes.ResetText();
                     string id1 = team.ID();
                     string id2 = sport.ID();
@@ -68,7 +71,7 @@ namespace JAGSport
 
                     //
                     DataTable origendatos;
-                    string query = "select nombreEquipo, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
+                    string query = "select nombreEquipo, zona,  nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
                     MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
                     origendatos = new DataTable();
@@ -92,10 +95,15 @@ namespace JAGSport
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string nameTeam = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+            string zona = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
 
             List<string> listaIdEvento = new List<string>();
-            Equipo team = new Equipo(nameTeam);
+            Equipo team = new Equipo(nameTeam, zona);
             string id1 = team.ID();
+
+            Integra gameplayer = new Integra(0, Convert.ToInt32(id1));
+            string idJugador = gameplayer.mostrarJugador();
+
             Juega game = new Juega(id1, "");
             listaIdEvento = team.idEvento(Convert.ToInt32(id1));   
             
@@ -115,8 +123,10 @@ namespace JAGSport
             Integra integra = new Integra();
             integra.eliminarIntegraEquipo(id1);
 
+
             // Eliminar Jugadores con ese Equipo
-            team.eliminarJugadorEquipo();
+            Jugador player = new Jugador();
+            player.eliminarJugadorID(idJugador);
 
             // Eliminar Juega (Relacion Deporte - Equipo)
             game.eliminarJuega();
@@ -125,7 +135,7 @@ namespace JAGSport
             team.eliminarEquipo();
 
             DataTable origendatos;
-            string query = "select nombreEquipo, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
+            string query = "select nombreEquipo, zona, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
             MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
             origendatos = new DataTable();

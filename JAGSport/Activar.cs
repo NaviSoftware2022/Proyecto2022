@@ -14,19 +14,19 @@ namespace JAGSport
     public partial class Activar : Form
     {
 
-        public bool resultado = false;
-
-        public bool Resultado
-        {
-            get { return resultado; }
-        }
 
 
 
         public Activar()
         {
             InitializeComponent();
-            resultado = false;
+        }
+
+        public int resultado = 0;
+
+        public int Resultado
+        {
+            get { return resultado; }
         }
 
 
@@ -49,7 +49,7 @@ namespace JAGSport
             Usuario user = new Usuario(textBox1.Text, textBox2.Text);
             UsuarioVIP userV = new UsuarioVIP(textBox1.Text, textBox2.Text, 1);
 
-            HomeVIP homevip = new HomeVIP();
+            Home home = new Home();
 
             if(user.autenticacion())
             {
@@ -57,14 +57,10 @@ namespace JAGSport
                 userV.agregar();
                 userV.autenticacionUser();
                 correo = textBox1.Text;
-                resultado = true;
-
+                resultado = 1;
 
                 this.Hide();
-                homevip.ShowDialog();
-
     
-                
             }
         }
     }

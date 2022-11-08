@@ -36,7 +36,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.listaEquipo1 = new System.Windows.Forms.ComboBox();
-            this.listaEquipo2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.resultado1 = new System.Windows.Forms.NumericUpDown();
@@ -47,6 +46,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.zonaCombo1 = new System.Windows.Forms.ComboBox();
+            this.zonaCombo2 = new System.Windows.Forms.ComboBox();
+            this.listaEquipo2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.resultado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -106,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(324, 80);
+            this.label4.Location = new System.Drawing.Point(324, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 26);
             this.label4.TabIndex = 5;
@@ -116,7 +118,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(563, 80);
+            this.label5.Location = new System.Drawing.Point(563, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 26);
             this.label5.TabIndex = 6;
@@ -128,20 +130,11 @@
             this.listaEquipo1.Enabled = false;
             this.listaEquipo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaEquipo1.FormattingEnabled = true;
-            this.listaEquipo1.Location = new System.Drawing.Point(383, 82);
+            this.listaEquipo1.Location = new System.Drawing.Point(383, 49);
             this.listaEquipo1.Name = "listaEquipo1";
             this.listaEquipo1.Size = new System.Drawing.Size(121, 24);
             this.listaEquipo1.TabIndex = 7;
-            // 
-            // listaEquipo2
-            // 
-            this.listaEquipo2.Enabled = false;
-            this.listaEquipo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaEquipo2.FormattingEnabled = true;
-            this.listaEquipo2.Location = new System.Drawing.Point(622, 82);
-            this.listaEquipo2.Name = "listaEquipo2";
-            this.listaEquipo2.Size = new System.Drawing.Size(121, 24);
-            this.listaEquipo2.TabIndex = 8;
+            this.listaEquipo1.SelectedIndexChanged += new System.EventHandler(this.listaEquipo1_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -238,11 +231,42 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // zonaCombo1
+            // 
+            this.zonaCombo1.Enabled = false;
+            this.zonaCombo1.FormattingEnabled = true;
+            this.zonaCombo1.Location = new System.Drawing.Point(383, 79);
+            this.zonaCombo1.Name = "zonaCombo1";
+            this.zonaCombo1.Size = new System.Drawing.Size(121, 21);
+            this.zonaCombo1.TabIndex = 21;
+            // 
+            // zonaCombo2
+            // 
+            this.zonaCombo2.Enabled = false;
+            this.zonaCombo2.FormattingEnabled = true;
+            this.zonaCombo2.Location = new System.Drawing.Point(622, 79);
+            this.zonaCombo2.Name = "zonaCombo2";
+            this.zonaCombo2.Size = new System.Drawing.Size(121, 21);
+            this.zonaCombo2.TabIndex = 22;
+            // 
+            // listaEquipo2
+            // 
+            this.listaEquipo2.Enabled = false;
+            this.listaEquipo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaEquipo2.FormattingEnabled = true;
+            this.listaEquipo2.Location = new System.Drawing.Point(622, 49);
+            this.listaEquipo2.Name = "listaEquipo2";
+            this.listaEquipo2.Size = new System.Drawing.Size(121, 24);
+            this.listaEquipo2.TabIndex = 8;
+            this.listaEquipo2.SelectedIndexChanged += new System.EventHandler(this.listaEquipo2_SelectedIndexChanged);
+            // 
             // eventoPasadoBackOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.zonaCombo2);
+            this.Controls.Add(this.zonaCombo1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button1);
@@ -283,7 +307,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox listaEquipo1;
-        private System.Windows.Forms.ComboBox listaEquipo2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown resultado1;
@@ -294,5 +317,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox zonaCombo1;
+        private System.Windows.Forms.ComboBox zonaCombo2;
+        private System.Windows.Forms.ComboBox listaEquipo2;
     }
 }

@@ -98,61 +98,55 @@ namespace JAGSport
 
         private void btnNor2_Click(object sender, EventArgs e)
         {
-            user = new Usuario(correoTxt2.Text, passwordTxt2.Text);
+            user = new Usuario(correoTxt2.Text, "");
             if(user.autenticacionUser())
             {
                 user.eliminary();
                 user.eliminarx();
                 MessageBox.Show("Accion Realizada con Exito", "Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 correoTxt2.Text = "";
-                passwordTxt2.Text = "";
             }
             else
             {
                 MessageBox.Show("No existe esa Cuenta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correoTxt2.Text = "";
-                passwordTxt2.Text = "";
             }
         }
 
         private void btnMiembro2_Click(object sender, EventArgs e)
         {
-            UsuarioVIP userVip = new UsuarioVIP(correoTxt2.Text, passwordTxt2.Text, 1);
-            user = new Usuario(correoTxt2.Text, passwordTxt2.Text);
+            UsuarioVIP userVip = new UsuarioVIP(correoTxt2.Text, "", 1);
+            user = new Usuario(correoTxt2.Text, "");
             if(user.autenticacionUserNormal())
             {
                 userVip.eliminar();
                 user.eliminarx();
                 MessageBox.Show("Accion Realizada con Exito", "Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 correoTxt2.Text = "";
-                passwordTxt2.Text = "";
             }
             else
             {
                 MessageBox.Show("No existe esa Cuenta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correoTxt2.Text = "";
-                passwordTxt2.Text = "";
             }
 
         }
 
         private void btnAdmin2_Click(object sender, EventArgs e)
         {
-            UsuarioAdmin userAdmin = new UsuarioAdmin(correoTxt2.Text, passwordTxt2.Text, "1");
-            user = new Usuario(correoTxt2.Text, passwordTxt2.Text);
+            UsuarioAdmin userAdmin = new UsuarioAdmin(correoTxt2.Text, "", "1");
+            user = new Usuario(correoTxt2.Text, "");
             if (user.autenticacionUserNormal())
             {
                 userAdmin.eliminar();
                 user.eliminarx();
                 MessageBox.Show("Accion Realizada con Exito", "Completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 correoTxt2.Text = "";
-                passwordTxt2.Text = "";
             }
             else
             {
                 MessageBox.Show("No existe esa Cuenta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correoTxt2.Text = "";
-                passwordTxt2.Text = "";
             }
         }
 

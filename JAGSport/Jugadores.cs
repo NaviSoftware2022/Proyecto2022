@@ -29,10 +29,10 @@ namespace JAGSport
         {
 
 
-            if(teamNombre.Text != "" && teamApellido.Text != "" && teamEdad.Text != "" && teamNumCam.Text != "" && teamPais.Text != "" && listaEquipoBox.SelectedItem.ToString() != "")
+            if(teamNombre.Text != "" && teamApellido.Text != "" && teamEdad.Text != "" && teamNumCam.Text != "" && teamPais.Text != "" && listaEquipoBox.SelectedItem.ToString() != "" && zonaCombo.SelectedItem.ToString() != "")
             {
                 player = new Jugador(teamNombre.Text, teamApellido.Text, Convert.ToInt32(teamEdad.Text), Convert.ToInt32(teamNumCam.Text), teamPais.Text, listaEquipoBox.SelectedItem.ToString(), timePicker.Value);
-                Equipo team = new Equipo(listaEquipoBox.SelectedItem.ToString());
+                Equipo team = new Equipo(listaEquipoBox.SelectedItem.ToString(), zonaCombo.SelectedItem.ToString());
 
 
                 player.AgregarJugador();
@@ -51,6 +51,8 @@ namespace JAGSport
                 teamPais.Text = "";
                 listaEquipoBox.ResetText();
                 timePicker.ResetText();
+                zonaCombo.ResetText();
+                zonaCombo.Enabled = false;
 
                 //
                 DataTable origendatos;
@@ -68,13 +70,17 @@ namespace JAGSport
 
         private void Jugadores_Load(object sender, EventArgs e)
         {
-            
+            listaEquipoBox.Items.Clear();
+            listaEquipoBox.ResetText();
+            zonaCombo.ResetText();
+            zonaCombo.Enabled = false;
+
             List<string> listaEquipo = new List<string>();
             listaEquipo = equipo.mostrarEquipo();
 
             foreach (string a in listaEquipo)
             {
-                listaEquipoBox.Items.Add(a);
+                listaEquipoBox.Items.Add(a);              
             }
 
             DataTable origendatos;
@@ -115,6 +121,20 @@ namespace JAGSport
             origendatos = new DataTable();
             adapter.Fill(origendatos);
             dataGridView1.DataSource = origendatos;
+        }
+
+        private void listaEquipoBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            zonaCombo.Items.Clear();
+            zonaCombo.Enabled = true;
+            zonaCombo.ResetText();
+            List<string> listaZona = new List<string>();
+            listaZona = equipo.mostrarZona(listaEquipoBox.SelectedItem.ToString());
+
+            foreach(string a in listaZona)
+            {
+                zonaCombo.Items.Add(a);
+            }
         }
     }
 }

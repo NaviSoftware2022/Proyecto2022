@@ -61,21 +61,20 @@ namespace JAGSport
             BackOffice backOffice = new BackOffice();
             Admin admin = new Admin();
 
-            if (user.autenticacion())
+            if (user.autenticacionUser())
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
                 this.Hide();
                 resultado = 1;
-                correo = textBox1.Text;
             }
             else if (userV.autenticacion())
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
-                resultado = 1;
+                resultado = 4;
                 this.Hide();
-                homeVIP.ShowDialog();
+                //homeVIP.ShowDialog();
             }
             else if (userA.autenticacion())
             {

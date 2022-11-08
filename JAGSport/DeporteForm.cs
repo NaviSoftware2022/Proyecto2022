@@ -78,13 +78,21 @@ namespace JAGSport
             string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             Deporte deporte = new Deporte(name);
             Juega game = new Juega("", id);
+            Jugador player = new Jugador();
+
             List<string> listaIdEvento = new List<string>();
+            List<string> listaEquipos = new List<string>();
+
+
+            listaEquipos = game.mostrarEquipos();
+
 
             Integra integra = new Integra();
-            string nombreDeEquipo = team.nombreEquipoObtener(name);
-            team = new Equipo(nombreDeEquipo);
+            
+            
             string idEquipo = team.ID();
             listaIdEvento = deporte.idEvento(Convert.ToInt32(id));
+
 
             // Eliminar Participa (Relacion Evento - Deporte - Equipos)
             Participa participa = new Participa(0, 0, Convert.ToInt32(id));
@@ -97,20 +105,41 @@ namespace JAGSport
                 evento.eliminarEvento(Convert.ToInt32(a));
             }
 
+            List<string> listJugadores = new List<string>();
+            List<string> listJugadoresID = new List<string>();
+
+
+            foreach (string a in listaEquipos)
+            {
+                Integra relacionJE = new Integra(0, Convert.ToInt32(a));
+                listJugadores = relacionJE.mostrarJugadores();
+                foreach(string b in listJugadores)
+                {
+                    listJugadoresID.Add(b);
+                }
+            }
+
             // Eliminar Integra (Relacion Equipo - Jugador)
             integra.eliminarIntegraEquipo(idEquipo);
 
             // Eliminar Jugadores con NombreEquipo
-            team.eliminarJugadorEquipo();
+            foreach(string c in listJugadoresID)
+            {
+                player.eliminarJugadorID(c);
+            }
 
             // ELiminar Juega (Relacion Deporte - Equipo)
             game.eliminarJuegaDeporte();
 
+            // Eliminar Equipos
+            foreach(string a in listaEquipos)
+            {
+                Equipo team = new Equipo();
+                team.eliminarEquipoID(a);
+            }
             // Eliminar Deporte
-            deporte.eliminarDeporte();
-
-            game.eliminarEquiposConDeporte(name);
-            
+            deporte.eliminarDeporte(id);
+      
 
             DataTable origendatos;
             string query = "select * from Deporte";

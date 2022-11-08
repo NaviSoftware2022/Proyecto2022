@@ -46,6 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.listaEquipoBox = new System.Windows.Forms.ComboBox();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.zonaCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,6 +216,7 @@
             this.listaEquipoBox.Name = "listaEquipoBox";
             this.listaEquipoBox.Size = new System.Drawing.Size(169, 26);
             this.listaEquipoBox.TabIndex = 21;
+            this.listaEquipoBox.SelectedIndexChanged += new System.EventHandler(this.listaEquipoBox_SelectedIndexChanged);
             // 
             // timePicker
             // 
@@ -225,11 +228,32 @@
             this.timePicker.TabIndex = 22;
             this.timePicker.Value = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(432, 269);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(129, 20);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Zona del Equipo:";
+            // 
+            // zonaCombo
+            // 
+            this.zonaCombo.Enabled = false;
+            this.zonaCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zonaCombo.FormattingEnabled = true;
+            this.zonaCombo.Location = new System.Drawing.Point(587, 263);
+            this.zonaCombo.Name = "zonaCombo";
+            this.zonaCombo.Size = new System.Drawing.Size(169, 26);
+            this.zonaCombo.TabIndex = 24;
+            // 
             // Jugadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 579);
+            this.Controls.Add(this.zonaCombo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.timePicker);
             this.Controls.Add(this.listaEquipoBox);
             this.Controls.Add(this.button2);
@@ -279,5 +303,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox listaEquipoBox;
         private System.Windows.Forms.DateTimePicker timePicker;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox zonaCombo;
     }
 }

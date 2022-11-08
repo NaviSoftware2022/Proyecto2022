@@ -17,10 +17,12 @@ namespace JAGSport
             InitializeComponent();
         }
         eventoPasadoBackOffice pasado = new eventoPasadoBackOffice();
+        eventoProximoBackOffice futuro = new eventoProximoBackOffice();
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            futuro.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

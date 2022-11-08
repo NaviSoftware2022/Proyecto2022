@@ -22,21 +22,29 @@ namespace JAGSport
         {
 
             Usuario user = new Usuario(correoBox.Text, contraseniaBox.Text);
-
-            if (user.autenticacionUser())
+            UsuarioVIP userV = new UsuarioVIP(correoBox.Text, contraseniaBox.Text, 1);
+            UsuarioAdmin userA = new UsuarioAdmin(correoBox.Text, contraseniaBox.Text, "1");
+            if (correoBox.Text.Trim() == "" || correoBox.Text == "" || contraseniaBox.Text.Trim() == "" || contraseniaBox.Text == "")
             {
-                MessageBox.Show("ya existe una Cuenta con ese Correo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                correoBox.Text = "";
-                contraseniaBox.Text = "";
+                MessageBox.Show("Rellene campos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                user.agregarx();
-                user.agregary();
-                MessageBox.Show("Cuenta Registrada con Exito", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                correoBox.Text = "";
-                contraseniaBox.Text = "";
-
+                if (user.autenticacion())
+                {
+       
+                    MessageBox.Show("ya existe una Cuenta con ese Correo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correoBox.Text = "";
+                    contraseniaBox.Text = "";
+                } 
+                else
+                {
+                    user.agregarx();
+                    user.agregary();
+                    MessageBox.Show("Cuenta Registrada con Exito", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    correoBox.Text = "";
+                    contraseniaBox.Text = "";
+                }
             }
         }
 

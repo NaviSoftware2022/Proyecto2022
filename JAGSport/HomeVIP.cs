@@ -79,16 +79,8 @@ namespace JAGSport
         }
 
         private void HomeVIP_Load_1(object sender, EventArgs e)
-        {
-            if(activar.resultado)
-            {
-                button2.Text = datosAct;
-            }
-            else
-            {
-                button2.Text = datosLog;
-            }
-        }
+        { }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
