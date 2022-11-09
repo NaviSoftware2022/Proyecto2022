@@ -24,6 +24,7 @@ namespace JAGSport
         vistaJugadores player = new vistaJugadores();
         eventosPasados eventoP = new eventosPasados();
         vistaEventos eventos = new vistaEventos();
+        vistaDeportes deporte = new vistaDeportes();
 
         
 
@@ -142,11 +143,11 @@ namespace JAGSport
             listaPubli = publicidad.mostrarPublicidad1();
 
             if(listaPubli.Count != 0) { 
-            int largo = listaPubli.Count;
-            int azar = random.Next(0, largo);
+                int largo = listaPubli.Count;
+                int azar = random.Next(0, largo);
 
-            pictureBox3.Image = Image.FromFile(listaPubli[azar]);
-
+                pictureBox3.Image = Image.FromFile(listaPubli[azar]);
+                pictureBox4.Image = Image.FromFile(listaPubli[azar]);
             }
         }
 
@@ -189,17 +190,30 @@ namespace JAGSport
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
+        { 
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                eventoP.ShowDialog();
+            }
+
             JAGSport.FormVariable.eventosPasados.idEvento = id;
-            eventoP.ShowDialog();
+
+          
+
+            
+            
         }
    
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            deporte.ShowDialog();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -209,39 +223,22 @@ namespace JAGSport
 
         private void timerCorreo_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("EXITO");
-           
-        }
-     
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-           
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-
             List<DateTime> hora = new List<DateTime>();
             List<DateTime> fecha = new List<DateTime>();
             List<string> idEvento = new List<string>();
 
-
-
             DateTime dia = DateTime.Now.Date;
-            DateTime fechaNow = DateTime.Now;
-            DateTime newfecha = fechaNow.AddMinutes(+10);
+            DateTime fechaNow = DateTime.Now;        
 
             EventoProximo evento = new EventoProximo();
             fecha = evento.obtenerFecha();
             hora = evento.obtenerHora();
             idEvento = evento.obtenerID();
 
-
             for (int i = 0; i < fecha.Count; i++)
             {
-                if ((fechaNow <= Convert.ToDateTime(hora[i])) && (Convert.ToDateTime(hora[i]) <= newfecha) && (fecha[i] == dia))
+                DateTime horaEventoMenos= hora[i].AddMinutes(-30);
+                if ((horaEventoMenos <= fechaNow) && (fechaNow <= hora[i]) && (fecha[i] == dia))
                 {
                     List<string> listCorreo = new List<string>();
                     suscribe usuarios = new suscribe("", idEvento[i]);
@@ -274,7 +271,7 @@ namespace JAGSport
                             //
 
                             StringBuilder mensaje = new StringBuilder();
-                            mensaje.Append("Buenas TESTING");
+                            mensaje.Append("JAGSport - Notificacion de Evento");
                             string Error = "";
                             string a = correos.EnviarCorreo(mensaje, DateTime.Now, "navisoftwareClient@gmail.com", listCorreo[z], "correo de prueba", equipo1E, equipo2E, horaE, out Error);
 
@@ -285,6 +282,20 @@ namespace JAGSport
                 }
 
             }
+
+        }
+     
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+           
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
+           
         }
     }
 }

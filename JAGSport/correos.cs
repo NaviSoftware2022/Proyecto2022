@@ -21,9 +21,9 @@ namespace JAGSport
             try
             {
                 mensaje.Append(Environment.NewLine);
-                mensaje.Append(string.Format("El Evento que te subscribiste esta apunto de empezar!!!"));
+                mensaje.Append(string.Format("El evento al que te subscribiste esta apunto de empezar!!!"));
                 mensaje.Append(Environment.NewLine);
-                mensaje.Append(string.Format(" Equipo 1: " + team1 + " vs equipo 2: " + team2));
+                mensaje.Append(string.Format(team1 + " vs " +team2));
                 mensaje.Append(Environment.NewLine);
                 mensaje.Append(string.Format("El evento se realizara en la hora y en el dia: " + horaEvento));
                 mensaje.Append(Environment.NewLine);

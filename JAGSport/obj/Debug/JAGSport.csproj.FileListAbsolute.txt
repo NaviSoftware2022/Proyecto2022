@@ -335,3 +335,5 @@ C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.FormVariable.eve
 C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.eventoProximoBackOffice.resources
 C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.vistaEventos.resources
 C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.FormVariable.eventosProximos.resources
+C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.vistaDeportes.resources
+C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.FormVariable.Deportes.resources

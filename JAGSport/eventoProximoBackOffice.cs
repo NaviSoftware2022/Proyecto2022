@@ -157,6 +157,7 @@ namespace JAGSport
         private void listaEquipo1_SelectedIndexChanged(object sender, EventArgs e)
         {
             zonaCombo1.Enabled = true;
+            zonaCombo1.ResetText();
             zonaCombo1.Items.Clear();
 
             string nombreEquipo = listaEquipo1.SelectedItem.ToString();
@@ -175,6 +176,7 @@ namespace JAGSport
         {
             zonaCombo2.Enabled = true;
             zonaCombo2.Items.Clear();
+            zonaCombo2.ResetText();
 
             string nombreEquipo = listaEquipo2.SelectedItem.ToString();
             List<string> list = new List<string>();

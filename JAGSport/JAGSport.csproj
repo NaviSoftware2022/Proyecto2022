@@ -123,6 +123,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVariable\Deportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVariable\Deportes.Designer.cs">
+      <DependentUpon>Deportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVariable\eventosPasados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,12 @@
     <Compile Include="Registrarse.Designer.cs">
       <DependentUpon>Registrarse.cs</DependentUpon>
     </Compile>
+    <Compile Include="vistaDeportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistaDeportes.Designer.cs">
+      <DependentUpon>vistaDeportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaEquipos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +237,9 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVariable\Deportes.resx">
+      <DependentUpon>Deportes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVariable\eventosPasados.resx">
       <DependentUpon>eventosPasados.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +276,9 @@
     </Compile>
     <EmbeddedResource Include="Registrarse.resx">
       <DependentUpon>Registrarse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistaDeportes.resx">
+      <DependentUpon>vistaDeportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaEquipos.resx">
       <DependentUpon>VistaEquipos.cs</DependentUpon>
