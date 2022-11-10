@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,25 +19,52 @@ namespace JAGSport
             InitializeComponent();
         }
 
+        public bool validacionCorreo (string mail)
+        {
+            try
+            {
+                new MailAddress(mail);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         private void botonCorreo_Click(object sender, EventArgs e)
         {
 
             Usuario user = new Usuario(correoBox.Text, contraseniaBox.Text);
-
-            if (user.autenticacionUser())
+            UsuarioVIP userV = new UsuarioVIP(correoBox.Text, contraseniaBox.Text, 1);
+            UsuarioAdmin userA = new UsuarioAdmin(correoBox.Text, contraseniaBox.Text, "1");
+            if (correoBox.Text.Trim() == "" || correoBox.Text == "" || contraseniaBox.Text.Trim() == "" || contraseniaBox.Text == "")
             {
-                MessageBox.Show("ya existe una Cuenta con ese Correo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                correoBox.Text = "";
-                contraseniaBox.Text = "";
+                MessageBox.Show("Rellene campos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                user.agregarx();
-                user.agregary();
-                MessageBox.Show("Cuenta Registrada con Exito", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                correoBox.Text = "";
-                contraseniaBox.Text = "";
-
+                if(validacionCorreo(correoBox.Text))
+                {
+                    if (user.autenticacion())
+                    {
+                        MessageBox.Show("ya existe una Cuenta con ese Correo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        correoBox.Text = "";
+                        contraseniaBox.Text = "";
+                    }
+                    else
+                    {
+                        user.agregarx();
+                        user.agregary();
+                        MessageBox.Show("Cuenta Registrada con Exito", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        correoBox.Text = "";
+                        contraseniaBox.Text = "";
+                    }
+                } else
+                {
+                    MessageBox.Show("Ingrese un correo electronico valido", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
 

@@ -59,22 +59,22 @@ namespace JAGSport
             Home homee = new Home();
             HomeVIP homeVIP = new HomeVIP();
             BackOffice backOffice = new BackOffice();
+            Admin admin = new Admin();
 
-            if (user.autenticacion())
+            if (user.autenticacionUser())
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
                 this.Hide();
                 resultado = 1;
-                correo = textBox1.Text;
             }
             else if (userV.autenticacion())
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
-                resultado = 1;
+                resultado = 4;
                 this.Hide();
-                homeVIP.ShowDialog();
+                //homeVIP.ShowDialog();
             }
             else if (userA.autenticacion())
             {
@@ -83,7 +83,7 @@ namespace JAGSport
                 textBox2.Text = "";
                 resultado = 2;
                 this.Hide();
-                backOffice.ShowDialog();
+                admin.ShowDialog();
             }
 
             else
