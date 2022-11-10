@@ -1,0 +1,215 @@
+create database jags;
+use jags;
+
+-- ENTIDADES
+
+
+create table Usuario ( 
+correo varchar(30) primary key,
+contrasenia varchar(30)
+);
+
+create table admin (
+correo varchar(30) Primary key,
+contrasenia varchar(30) not null,
+codigoAdmin varchar(30),
+foreign key (correo) references Usuario (correo)
+);
+
+create table Miembro (
+correo varchar(30) primary key,
+contrasenia varchar(30),
+Membresia varchar(2),
+constraint foreign key (correo) references Usuario (correo)
+);
+
+create table UsuarioNoM (
+correo varchar(30) primary key,
+contrasenia varchar(30),
+constraint foreign key (correo) references Usuario (correo)
+);
+
+create table Deporte (
+idDeporte int auto_increment primary key,
+nombreDeporte varchar(30) not null 
+);
+
+create table Evento (
+idEvento int auto_increment,
+hora time, 
+fecha date,
+nombreDeporte varchar(30),
+equipo1 varchar(30),
+resultado1 int,
+equipo2 varchar(30),
+resultado2 int,
+primary key(idEvento, hora, fecha, equipo1, equipo2)
+);
+
+create table EventoFijado (
+idEvento int auto_increment,
+hora time,
+fecha date,
+nombreDeporte varchar(30),
+equipo1 varchar(30),
+equipo2 varchar(30),
+primary key(idEvento, hora, fecha, equipo1, equipo2));
+
+
+create table Lugar (
+idLugar int auto_increment primary key, 
+nombreLugar varchar(30),
+pais varchar(30)
+);
+
+create table Puntuacion (
+idPuntuacion int auto_increment primary key
+);
+
+create table Puntos ( 
+idPuntuacion int primary key,
+puntaje int,
+constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
+);
+
+create table Distancia (
+idPuntuacion int primary key,
+kilometros int, 
+metros int,
+constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
+);
+
+create table Tiempo (
+idPuntuacion int primary key, 
+minutos int, 
+segundos int,
+constraint foreign key (idPuntuacion) references Puntuacion (idPuntuacion)
+);
+
+create table Equipo (
+idEquipo int auto_increment,
+nombreEquipo varchar(30), 
+zona varchar(30),
+deporteName varchar(30),
+Primary key(idEquipo)
+);
+
+create table Jugador (
+idJugador int auto_increment,
+nombre varchar(50),
+apellido varchar(50),
+edad int,
+nroCamiseta int,
+nacionalidad varchar(50),
+equipo varchar(30),
+nacimiento date,
+primary key (idJugador)
+);
+
+create table Publicidad(
+IdImagen int auto_increment primary key,
+Nombre varchar(100),
+Imagen varchar(1000));
+
+-- RELACIONES 
+
+create table Tiene (
+correo varchar(30),
+IdImagen int,
+primary key(correo, IdImagen),
+constraint foreign key (correo) references UsuarioNoM (correo),
+constraint foreign key (IdImagen) references Publicidad (IdImagen)
+);
+
+create table Integra (
+idEquipo int,
+idJugador int,
+Primary key(idEquipo, idJugador),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idJugador) references Jugador (idJugador)
+);
+
+create table Participa (
+idEquipo int, 
+idEvento int,
+idDeporte int,
+primary key(idEquipo, idEvento, idDeporte),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idEvento) references Evento (idEvento),
+constraint foreign key (idDeporte) references Deporte (idDeporte) 
+);
+
+create table ParticipaFijado (
+idEquipo int, 
+idEvento int,
+idDeporte int,
+primary key(idEquipo, idEvento, idDeporte),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idEvento) references EventoFijado (idEvento),
+constraint foreign key (idDeporte) references Deporte (idDeporte) 
+);
+
+create table Pasa (
+idEvento int primary key,
+idLugar int,
+constraint foreign key (idEvento) references Evento (idEvento),
+constraint foreign key (idLugar) references Lugar (idLugar)
+);
+
+create table Suscribe (
+correo varchar(30),
+idEvento int,
+primary key(correo, idEvento),
+constraint foreign key (correo) references Miembro (correo),
+constraint foreign key (idEvento) references Eventofijado (idEvento)
+);
+
+create table juega (
+idEquipo int, 
+idDeporte int,
+primary key(idEquipo, idDeporte),
+constraint foreign key (idEquipo) references Equipo (idEquipo),
+constraint foreign key (idDeporte) references Deporte (idDeporte) 
+);
+
+
+
+-- DML
+
+SET SQL_SAFE_UPDATES = 0;
+
+insert into Usuario values ("test", 123);
+insert into Usuario values ("alejobuc@gmail.com", 123);
+insert into Usuario values ("joaquin@gmail.com", 456);
+
+insert into Usuario value ("root", "root" );
+insert into admin value ("root", "root", 1);
+
+
+--CONSULTAS
+
+select a.nombreEquipo, b.nombreDeporte from equipo a, evento b where a.nombreEquipo=equipo1 and nombreDeporte="futbol" and fecha >= DATE_SUB(now(), interval 30 day)  or a.nombreEquipo=equipo2 and nombreDeporte="futbol" and fecha >= DATE_SUB(now(), interval 30 day)
+group by a.nombreEquipo having count(a.nombreEquipo) > ANY (select count(a.nombreEquipo) from equipo a, evento b where a.nombreEquipo=equipo1 and nombreDeporte="basket" and fecha >= DATE_SUB(now(), interval 30 day)  or a.nombreEquipo=equipo2 and nombreDeporte="basket" and fecha >= DATE_SUB(now(), interval 30 day)
+group by a.nombreEquipo);
+
+select month(fecha), count(idEvento) from evento where month(fecha)= 8 or month(fecha)=9 or month(fecha)=10
+group by month(fecha); 
+
+select nombreEquipo from equipo where nombreEquipo not in (select equipo1 from evento where fecha <= DATE_SUB(now(), interval 30 day))
+and nombreEquipo not in(select equipo2 from evento where fecha <= DATE_SUB(now(), interval 30 day)) group by nombreEquipo;
+
+select nombreDeporte, count(nombreDeporte) from evento where fecha <= DATE_SUB(now(), interval 30 day) 
+group by nombreDeporte having count(nombreDeporte) > 3;
+
+select * from equipo a left join evento b on a.nombreEquipo= b.equipo1 or a.nombreEquipo= b.equipo2;
+
+select a.nombreEquipo, count(a.nombreEquipo) from equipo a, evento b where a.nombreEquipo= b.equipo1 or a.nombreEquipo=b.equipo2 group by a.nombreEquipo having count(a.nombreEquipo) >=all (select count(a.nombreEquipo) from equipo a, evento b where a.nombreEquipo= b.equipo1 or a.nombreEquipo=b.equipo2 group by a.nombreEquipo having count(a.nombreEquipo));
+
+create view eventosUruguayos as select a.* from evento a, equipo b where b.zona= "uruguay" group by a.idEvento;
+create user u_prueba;
+grant select on eventosUruguayos.* to u_prueba;
+
+select a.nombreEquipo, sum(b.resultado) from equipo a, evento b where a.nombreEquipo= b.equipo1 and a.zona="uruguay" group by a.nombreEquipo having (sum(b.resultado1)>any (select sum(b.resultado1) from equipo a, evento b where a.nombreEquipo=b.equipo1 and a.zona="argentina") and sum(b.resultado1)>all(select sum(b.resultado1) from equipo a, evento b where a.nombreEquipo= b.equipo1 and a.zona="brasil"));
+select a.nombreEquipo, sum(b.resultado2) from equipo a, evento b where a.nombreEquipo= b.equipo2 and a.zona="uruguay" group by a.nombreEquipo having (sum(b.resultado2)>any (select sum(b.resultado2) from equipo a, evento b where a.nombreEquipo=b.equipo2 and a.zona="argentina") and sum(b.resultado2)>all(select sum(b.resultado2) from equipo a, evento b where a.nombreEquipo= b.equipo2 and a.zona="brasil"));
+
+-- Debido a que nuestra base de datos esta hecha de forma de que se registren los datos de los resultados dependiendo de si el equipo se registro en equipo1 o equipo2 y no por el nombre del equipo decidimos hacer la consulta para el caso de equipo 1 y para el equipo 2 por separado.
