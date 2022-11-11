@@ -24,45 +24,66 @@ namespace JAGSport
         Integra integra = new Integra();
         int id1 = 0;
         int id2 = 0;
+        DateTime ahora = DateTime.Now;
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-            if(teamNombre.Text != "" && teamApellido.Text != "" && teamEdad.Text != "" && teamNumCam.Text != "" && teamPais.Text != "" && listaEquipoBox.SelectedItem.ToString() != "" && zonaCombo.SelectedItem.ToString() != "")
+            if(teamNombre.Text != "" && teamApellido.Text != "" && teamEdad.Value != 0 && teamPais.Text != "" && listaEquipoBox.SelectedItem != null && zonaCombo.SelectedItem != null)
             {
-                player = new Jugador(teamNombre.Text, teamApellido.Text, Convert.ToInt32(teamEdad.Text), Convert.ToInt32(teamNumCam.Text), teamPais.Text, listaEquipoBox.SelectedItem.ToString(), timePicker.Value);
-                Equipo team = new Equipo(listaEquipoBox.SelectedItem.ToString(), zonaCombo.SelectedItem.ToString());
+                if(timePicker.Value < ahora)
+                {
+                    player = new Jugador(teamNombre.Text, teamApellido.Text, Convert.ToInt32(teamEdad.Text), Convert.ToInt32(teamNumCam.Text), teamPais.Text, listaEquipoBox.SelectedItem.ToString(), timePicker.Value.Date);
+                    if (!player.autenticacionJugador())
+                    {
+                        Equipo team = new Equipo(listaEquipoBox.SelectedItem.ToString(), zonaCombo.SelectedItem.ToString());
 
 
-                player.AgregarJugador();
+                        bool condicion = player.AgregarJugador();
+                        if(condicion)
+                        {
+                            id1 = player.ID();
+                            id2 = Convert.ToInt32(team.ID());
 
-                id1 = player.ID();
-                id2 = Convert.ToInt32(team.ID());
+                            integra = new Integra(id1, id2);
+                            integra.agregarIntegra();
 
-                integra = new Integra(id1, id2);
-                integra.agregarIntegra();
+                            MessageBox.Show("Jugador registrado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            teamNombre.Text = "";
+                            teamApellido.Text = "";
+                            teamEdad.Text = "";
+                            teamNumCam.Text = "";
+                            teamPais.Text = "";
+                            listaEquipoBox.ResetText();
+                            timePicker.ResetText();
+                            zonaCombo.ResetText();
+                            zonaCombo.Enabled = false;
 
-                MessageBox.Show("Jugador registrado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                teamNombre.Text = "";
-                teamApellido.Text = "";
-                teamEdad.Text = "";
-                teamNumCam.Text = "";
-                teamPais.Text = "";
-                listaEquipoBox.ResetText();
-                timePicker.ResetText();
-                zonaCombo.ResetText();
-                zonaCombo.Enabled = false;
-
-                //
-                DataTable origendatos;
-                string query = "select nombre, apellido, nacionalidad, nacimiento, equipo from Jugador";
-                MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
-                origendatos = new DataTable();
-                adapter.Fill(origendatos);
-                dataGridView1.DataSource = origendatos;
-            } else
+                            //
+                            DataTable origendatos;
+                            string query = "select nombre, apellido, nacionalidad, nacimiento, equipo from Jugador";
+                            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+                            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+                            origendatos = new DataTable();
+                            adapter.Fill(origendatos);
+                            dataGridView1.DataSource = origendatos;
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERROR, intente mas tarde", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe ese jugador", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } 
+                else
+                {
+                    MessageBox.Show("Fecha Incorrecta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+             
+            }
+            else
             {
                 MessageBox.Show("Rellene campos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }        
@@ -74,6 +95,7 @@ namespace JAGSport
             listaEquipoBox.ResetText();
             zonaCombo.ResetText();
             zonaCombo.Enabled = false;
+            this.timePicker.Value = DateTime.Now;
 
             List<string> listaEquipo = new List<string>();
             listaEquipo = equipo.mostrarEquipo();
@@ -105,22 +127,29 @@ namespace JAGSport
             DateTime nacimientoJ = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[3].Value);
             string equipoJ = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value);
 
-            Jugador player = new Jugador(nombreJ, apellidoJ, 1, 1, nacionalidadJ, equipoJ, nacimientoJ);
-            int id = player.ID();
-            Integra integra = new Integra(id, 0);
-            integra.eliminarIntegra();
-            player.eliminarJugador();
+            if (nombreJ == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Jugador player = new Jugador(nombreJ, apellidoJ, 1, 1, nacionalidadJ, equipoJ, nacimientoJ);
+                int id = player.ID();
+                Integra integra = new Integra(id, 0);
+                integra.eliminarIntegra();
+                player.eliminarJugador();
 
-            MessageBox.Show("Jugador eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Jugador eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //
-            DataTable origendatos;
-            string query = "select nombre, apellido, nacionalidad, nacimiento, equipo from Jugador";
-            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
-            origendatos = new DataTable();
-            adapter.Fill(origendatos);
-            dataGridView1.DataSource = origendatos;
+                //
+                DataTable origendatos;
+                string query = "select nombre, apellido, nacionalidad, nacimiento, equipo from Jugador";
+                MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+                origendatos = new DataTable();
+                adapter.Fill(origendatos);
+                dataGridView1.DataSource = origendatos;
+            }
         }
 
         private void listaEquipoBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -21,6 +21,7 @@ namespace JAGSport
 
         public void Agregar()
         {
+            fechaEvento.Value = fechaEvento.Value.Date;
             Evento evento = new Evento(fechaEvento.Value, horaEvento.Value, listaDeportes.SelectedItem.ToString(), Convert.ToInt32(resultado1.Value), Convert.ToInt32(resultado2.Value), listaEquipo1.SelectedItem.ToString(), listaEquipo2.SelectedItem.ToString());
             if (!evento.autenticacionEvento())
             {
@@ -46,6 +47,12 @@ namespace JAGSport
                 Participa participa2 = new Participa(id2, idEvento, idDeporte);
                 participa2.agregarParticipa();
 
+                Ubicacion place = new Ubicacion(listaLugarBox.SelectedItem.ToString(), paisComboBox.SelectedItem.ToString());
+                string idPlace = place.ID().ToString();
+
+                Pasa pasa = new Pasa(idPlace, idEvento.ToString());
+                pasa.agregarPasa();
+
                 listaEquipo1.ResetText();
                 listaEquipo2.ResetText();
                 listaDeportes.ResetText();
@@ -57,8 +64,13 @@ namespace JAGSport
                 zonaCombo2.Items.Clear();
                 zonaCombo1.ResetText();
                 zonaCombo2.ResetText();
+                paisComboBox.ResetText();
+                paisComboBox.Items.Clear();
+                listaLugarBox.ResetText();
+                listaLugarBox.Items.Clear();
                 zonaCombo1.Enabled = false;
                 zonaCombo2.Enabled = false;
+                paisComboBox.Enabled = false;
                 MessageBox.Show("Evento creado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //
@@ -80,23 +92,43 @@ namespace JAGSport
 
         Deporte deporte = new Deporte();
         Equipo equipo = new Equipo();
+        Ubicacion place = new Ubicacion();
         MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root");
         DateTime ahora = DateTime.Now;
 
         private void eventoPasadoBackOffice_Load(object sender, EventArgs e)
-        {
+        {     
             List<string> listaDeporte = new List<string>();
             List<string> listaEquipo = new List<string>();
+            List<string> listaLugar = new List<string>();
+            paisComboBox.Enabled = false;
             listaDeporte = deporte.mostrarDeporte();
             listaEquipo = equipo.mostrarEquipo();
+            listaLugar = place.mostrarNombreLugar();
             listaEquipo1.ResetText();
             listaEquipo2.ResetText();
+            listaEquipo1.Items.Clear();
+            listaEquipo2.Items.Clear();
             listaDeportes.ResetText();
+            listaLugarBox.ResetText();
+            zonaCombo1.Items.Clear();
+            zonaCombo2.Items.Clear();
+            zonaCombo1.ResetText();
+            zonaCombo2.ResetText();
+            this.fechaEvento.Value = DateTime.Now.AddDays(-1);
+            listaLugarBox.Items.Clear();
+            paisComboBox.ResetText();
+            paisComboBox.Items.Clear();
 
             listaDeportes.Items.Clear();
             foreach (string a in listaDeporte)
             {
                listaDeportes.Items.Add(a); 
+            }
+
+            foreach(string a in listaLugar)
+            {
+                listaLugarBox.Items.Add(a);
             }
 
             DataTable origendatos;
@@ -119,13 +151,14 @@ namespace JAGSport
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-          
+        {        
             if(listaDeportes.SelectedItem != null &&
                 listaEquipo1.SelectedItem != null &&
                 listaEquipo2.SelectedItem != null &&
                 zonaCombo1.SelectedItem != null &&
-                zonaCombo2.SelectedItem != null)
+                zonaCombo2.SelectedItem != null &&
+                listaLugarBox.SelectedItem != null &&
+                paisComboBox.SelectedItem != null)
             {
                 if(ahora > fechaEvento.Value)
                 {
@@ -152,23 +185,37 @@ namespace JAGSport
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idEvento = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            string idEvento1 = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
-            Participa participa1 = new Participa(0, idEvento, 0);
-            participa1.eliminarParticipa();
-            Participa participa2 = new Participa(0, idEvento, 0);
-            participa2.eliminarParticipa();
+            if (idEvento1 == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int idEvento = Convert.ToInt32(idEvento1);
+                Participa participa1 = new Participa(0, idEvento, 0);
+                participa1.eliminarParticipa();
+                Participa participa2 = new Participa(0, idEvento, 0);
+                participa2.eliminarParticipa();
 
-            Evento evento = new Evento();
-            evento.eliminarEvento(idEvento);
 
-            DataTable origendatos;
-            string query = "select idEvento, fecha, hora, equipo1, equipo2, nombreDeporte from Evento";
-            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
-            origendatos = new DataTable();
-            adapter.Fill(origendatos);
-            dataGridView1.DataSource = origendatos;
+                Pasa pasa = new Pasa("", idEvento1);
+                pasa.eliminarPasaEvento();
+
+                Evento evento = new Evento();
+                evento.eliminarEvento(idEvento);
+
+                DataTable origendatos;
+                string query = "select idEvento, fecha, hora, equipo1, equipo2, nombreDeporte from Evento";
+                MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+                origendatos = new DataTable();
+                adapter.Fill(origendatos);
+                dataGridView1.DataSource = origendatos;
+
+                MessageBox.Show("Eliminado correctamente", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void listaDeportes_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,7 +265,6 @@ namespace JAGSport
             {
                 zonaCombo1.Items.Add(a);
             }
-
         }
 
         private void listaEquipo2_SelectedIndexChanged(object sender, EventArgs e)
@@ -236,6 +282,25 @@ namespace JAGSport
             foreach (string a in list)
             {
                 zonaCombo2.Items.Add(a);
+            }
+        }
+
+        private void listaLugarBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            paisComboBox.ResetText();
+            paisComboBox.Items.Clear();
+
+            paisComboBox.Enabled = true;
+
+            string nombreLugar = listaLugarBox.SelectedItem.ToString();
+            List<string> list = new List<string>();
+
+            Ubicacion place = new Ubicacion(nombreLugar, "");
+            list = place.mostrarPais();
+
+            foreach (string a in list)
+            {
+                paisComboBox.Items.Add(a);
             }
         }
     }

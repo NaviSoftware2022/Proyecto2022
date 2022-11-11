@@ -147,6 +147,12 @@
     <Compile Include="FormVariable\eventosProximos.Designer.cs">
       <DependentUpon>eventosProximos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVariable\place.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVariable\place.Designer.cs">
+      <DependentUpon>place.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVariable\PlayerStats.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,12 +177,6 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="HomeVIP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HomeVIP.Designer.cs">
-      <DependentUpon>HomeVIP.cs</DependentUpon>
-    </Compile>
     <Compile Include="Jugadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +191,12 @@
     </Compile>
     <Compile Include="Registrarse.Designer.cs">
       <DependentUpon>Registrarse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UbicacionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UbicacionForm.Designer.cs">
+      <DependentUpon>UbicacionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="vistaDeportes.cs">
       <SubType>Form</SubType>
@@ -215,6 +221,12 @@
     </Compile>
     <Compile Include="vistaJugadores.Designer.cs">
       <DependentUpon>vistaJugadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistaLugar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistaLugar.Designer.cs">
+      <DependentUpon>vistaLugar.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Activar.resx">
       <DependentUpon>Activar.cs</DependentUpon>
@@ -255,6 +267,9 @@
     <EmbeddedResource Include="FormVariable\eventosProximos.resx">
       <DependentUpon>eventosProximos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVariable\place.resx">
+      <DependentUpon>place.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVariable\PlayerStats.resx">
       <DependentUpon>PlayerStats.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,9 +281,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HomeVIP.resx">
-      <DependentUpon>HomeVIP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jugadores.resx">
       <DependentUpon>Jugadores.cs</DependentUpon>
@@ -286,6 +298,9 @@
     <EmbeddedResource Include="Registrarse.resx">
       <DependentUpon>Registrarse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UbicacionForm.resx">
+      <DependentUpon>UbicacionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistaDeportes.resx">
       <DependentUpon>vistaDeportes.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vistaJugadores.resx">
       <DependentUpon>vistaJugadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistaLugar.resx">
+      <DependentUpon>vistaLugar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

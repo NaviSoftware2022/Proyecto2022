@@ -12,7 +12,7 @@ namespace JAGSport
     {
 
         static MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root");
-        HomeVIP userV = new HomeVIP();
+        
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -315,29 +315,6 @@ namespace JAGSport
                 return a;
             }
 
-            public bool editarDeporte (string x)
-            {
-                try
-                {
-                    datos.Open();
-                    MySqlCommand comando = new MySqlCommand("update Deporte set nombreDeporte = @name where idDeporte = @id", datos);
-                    comando.Parameters.AddWithValue("@name", nombreDeporte);
-                    comando.Parameters.AddWithValue("@id", x);
-
-                    MySqlDataReader lector = comando.ExecuteReader();
-                    lector.Read();
-
-                    datos.Close();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    datos.Close();
-                    return false;
-                }
-            }
-
-
             public void agregarDeporte()
             {
                 datos.Open();
@@ -457,11 +434,11 @@ namespace JAGSport
             public bool autenticacionEvento()
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("Select hora, fecha, equipo1, equipo2 from Evento where hora = @a AND fecha = @b AND equipo1 = @c and equipo2 = @d", datos);
-                comando.Parameters.AddWithValue("@a", hora);
-                comando.Parameters.AddWithValue("@b", fecha);
+                MySqlCommand comando = new MySqlCommand("Select fecha, hora , equipo1, equipo2 from Evento where fecha = @a and hora = @b and equipo1 = @c and equipo2 = @d", datos);
+                comando.Parameters.AddWithValue("@a", fecha);
+                comando.Parameters.AddWithValue("@b", hora);
                 comando.Parameters.AddWithValue("@c", equipo1);
-                comando.Parameters.AddWithValue("@d", equipo1);
+                comando.Parameters.AddWithValue("@d", equipo2);
 
                 MySqlDataReader lector = comando.ExecuteReader();
                 bool a = lector.Read();
@@ -501,7 +478,7 @@ namespace JAGSport
             public void eliminarEventoy(string x)
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("delete from participo where idEvento = @idEvento;", datos);
+                MySqlCommand comando = new MySqlCommand("delete from participa where idEvento = @idEvento;", datos);
                 comando.Parameters.AddWithValue("@idEvento", x);
 
                 comando.ExecuteNonQuery();
@@ -569,11 +546,11 @@ namespace JAGSport
             public bool autenticacionEvento()
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("Select hora, fecha, equipo1, equipo2 from Eventofijado where hora = @a AND fecha = @b AND equipo1 = @c and equipo2 = @d", datos);
-                comando.Parameters.AddWithValue("@a", hora);
-                comando.Parameters.AddWithValue("@b", fecha);
+                MySqlCommand comando = new MySqlCommand("Select fecha, hora , equipo1, equipo2 from Eventofijado where fecha = @a and hora = @b and equipo1 = @c and equipo2 = @d", datos);
+                comando.Parameters.AddWithValue("@a", fecha);
+                comando.Parameters.AddWithValue("@b", hora);
                 comando.Parameters.AddWithValue("@c", equipo1);
-                comando.Parameters.AddWithValue("@d", equipo1);
+                comando.Parameters.AddWithValue("@d", equipo2);
 
                 MySqlDataReader lector = comando.ExecuteReader();
                 bool a = lector.Read();
@@ -1098,20 +1075,20 @@ namespace JAGSport
                 this.nacimiento = nacimiento;
             }
 
+
             public int ID()
             {
                 int a = 0;
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("Select idJugador from Jugador where nombre = @a AND apellido = @b AND nacionalidad = @d", datos);
+                MySqlCommand comando = new MySqlCommand("Select idJugador from Jugador where nombre = @a AND apellido = @b AND nacimiento = @d", datos);
                 comando.Parameters.AddWithValue("@a", nombre);
                 comando.Parameters.AddWithValue("@b", apellido);
-                comando.Parameters.AddWithValue("@d", nacionalidad);
+                comando.Parameters.AddWithValue("@d", nacimiento);
 
 
                 MySqlDataReader lector = comando.ExecuteReader();
                 if (lector.Read())
                 {
-                   
                     a = Convert.ToInt32(lector["idJugador"]);
                 }
 
@@ -1120,20 +1097,44 @@ namespace JAGSport
                 return a;
             }
 
-            public void AgregarJugador()
-            {
+            public bool autenticacionJugador ()
+            { 
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("insert into jugador (nombre, apellido, edad, nroCamiseta, nacionalidad, equipo, nacimiento) value (@a, @b, @c, @d, @e, @g, @h);", datos);
+                MySqlCommand comando = new MySqlCommand("Select nombre, apellido, nacimiento from Jugador where nombre = @a AND apellido = @b AND nacimiento = @d", datos);
                 comando.Parameters.AddWithValue("@a", nombre);
                 comando.Parameters.AddWithValue("@b", apellido);
-                comando.Parameters.AddWithValue("@c", edad);
-                comando.Parameters.AddWithValue("@d", nroCamiseta);
-                comando.Parameters.AddWithValue("@e", nacionalidad);
-                comando.Parameters.AddWithValue("@g", equipo);
-                comando.Parameters.AddWithValue("@h", nacimiento);
+                comando.Parameters.AddWithValue("@d", nacimiento);
 
-                comando.ExecuteNonQuery();
+                MySqlDataReader lector = comando.ExecuteReader();
+                bool a = lector.Read();
                 datos.Close();
+
+                return a;
+            }
+
+            public bool AgregarJugador()
+            {
+                try
+                {
+                    datos.Open();
+                    MySqlCommand comando = new MySqlCommand("insert into jugador (nombre, apellido, edad, nroCamiseta, nacionalidad, equipo, nacimiento) value (@a, @b, @c, @d, @e, @g, @h);", datos);
+                    comando.Parameters.AddWithValue("@a", nombre);
+                    comando.Parameters.AddWithValue("@b", apellido);
+                    comando.Parameters.AddWithValue("@c", edad);
+                    comando.Parameters.AddWithValue("@d", nroCamiseta);
+                    comando.Parameters.AddWithValue("@e", nacionalidad);
+                    comando.Parameters.AddWithValue("@g", equipo);
+                    comando.Parameters.AddWithValue("@h", nacimiento);
+
+                    comando.ExecuteNonQuery();
+                    datos.Close();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    datos.Close();
+                    return false;
+                }
             }
 
             public void eliminarJugador()
@@ -1277,12 +1278,10 @@ namespace JAGSport
                 this.Imagen = Imagen;
             }
 
-
-
             public void agregarPublicidad1()
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("insert into Publicidad1 (Nombre, Imagen) value (@nom, @img);", datos);
+                MySqlCommand comando = new MySqlCommand("insert into Publicidad (Nombre, Imagen) value (@nom, @img);", datos);
                 comando.Parameters.AddWithValue("@nom", Nombre);
                 comando.Parameters.AddWithValue("@img", Imagen);
 
@@ -1293,7 +1292,7 @@ namespace JAGSport
             public void eliminarPublicidad1()
             {
                 datos.Open();
-                MySqlCommand comando = new MySqlCommand("delete from Publicidad1 where Nombre = @nom", datos);
+                MySqlCommand comando = new MySqlCommand("delete from Publicidad where Nombre = @nom", datos);
                 comando.Parameters.AddWithValue("@nom", this.Nombre);
                 comando.Parameters.AddWithValue("@img", this.Imagen);
 
@@ -1386,5 +1385,215 @@ namespace JAGSport
                 return correos;
             }
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        public class Ubicacion
+        {
+            public string nombreLugar { get; set; }
+            public string pais { get; set; }
+
+            public Ubicacion () { }
+            public Ubicacion (string nombreLugar, string pais)
+            {
+                this.nombreLugar = nombreLugar;
+                this.pais = pais;
+            }
+
+
+            public int ID ()
+            {
+                int a = 0;
+
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idLugar from lugar where nombreLugar = @a and pais = @b", datos);
+                comando.Parameters.AddWithValue("@a", nombreLugar);
+                comando.Parameters.AddWithValue("@b", pais);
+
+                MySqlDataReader lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    a = Convert.ToInt32(lector["idLugar"]);
+                }
+
+                datos.Close();
+
+                return a;
+            }
+
+            public List<string> mostrarDatosLugar(string x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("select nombreLugar, pais from Lugar where idLugar = @id", datos);
+                comando.Parameters.AddWithValue("@id", x);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                List<string> lista = new List<string>();
+                while (lector.Read())
+                {
+                    lista.Add(Convert.ToString(lector["nombreLugar"]));
+                    lista.Add(Convert.ToString(lector["pais"]));
+                }
+                lista.Sort();
+                datos.Close();
+                return lista;
+            }
+
+            public bool autenticacionLugar()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select nombreLugar, pais from lugar where nombreLugar = @a and pais = @b", datos);
+                comando.Parameters.AddWithValue("@a", nombreLugar);
+                comando.Parameters.AddWithValue("@b", pais);
+
+                MySqlDataReader lector = comando.ExecuteReader();
+                bool a = lector.Read();
+
+                datos.Close();
+
+                return a;
+            }
+
+            public void agregarLugar()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into lugar(nombreLugar, pais) value (@a, @b)", datos);
+                comando.Parameters.AddWithValue("@a", nombreLugar);
+                comando.Parameters.AddWithValue("@b", pais);
+
+                comando.ExecuteNonQuery();
+
+                datos.Close();
+            }
+
+            public void eliminarLugar(string x)
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Lugar where idLugar = @id", datos);
+                comando.Parameters.AddWithValue("@id", x);
+
+                comando.ExecuteNonQuery();
+
+                datos.Close();
+            }
+
+            public List<string> mostrarNombreLugar()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("select distinct nombreLugar from Lugar", datos);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                List<string> lista = new List<string>();
+                while (lector.Read())
+                {
+                    lista.Add(Convert.ToString(lector["nombreLugar"]));
+                }
+                lista.Sort();
+                datos.Close();
+                return lista;
+            }
+
+            public List<string> mostrarPais()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("select pais from Lugar where nombreLugar = @name", datos);
+                comando.Parameters.AddWithValue("@name", nombreLugar);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                List<string> lista = new List<string>();
+                while (lector.Read())
+                {
+                    lista.Add(Convert.ToString(lector["pais"]));
+                }
+                lista.Sort();
+                datos.Close();
+                return lista;
+            }
+        }
+
+        public class Pasa
+        {
+            public string idLugar { get; set; }
+            public string idEvento { get; set; }
+
+            public Pasa () { }
+            public Pasa (string idLugar, string idEvento)
+            {
+                this.idLugar = idLugar;
+                this.idEvento = idEvento;
+            }
+
+            public void agregarPasa ()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("insert into pasa (idEvento, idLugar) value (@a, @b)", datos);
+                comando.Parameters.AddWithValue("@a", idEvento);
+                comando.Parameters.AddWithValue("@b", idLugar);
+
+                comando.ExecuteNonQuery();
+
+                datos.Close();
+            }
+
+            public List<string> obtenerIDEvento()
+            {
+                int a = 0;
+
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idEvento from pasa where idLugar = @a", datos);
+                comando.Parameters.AddWithValue("@a", idLugar);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                List<string> lista = new List<string>();
+                while (lector.Read())
+                {
+                    lista.Add(Convert.ToString(lector["idEvento"]));
+                }
+                lista.Sort();
+                datos.Close();
+                return lista;
+            }
+
+            public string obtenerIDLugar()
+            {
+                string a = "";
+
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("Select idLugar from pasa where idEvento = @a", datos);
+                comando.Parameters.AddWithValue("@a", idEvento);
+                MySqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.Read())
+                {
+                    a = Convert.ToString(lector["idLugar"]);
+                }
+
+                datos.Close();
+
+                return a;
+            }
+
+            public void eliminarPasaEvento()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Pasa where idEvento = @id;", datos);
+                comando.Parameters.AddWithValue("@id", idEvento);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+
+            public void eliminarPasaLugar()
+            {
+                datos.Open();
+                MySqlCommand comando = new MySqlCommand("delete from Pasa where idLugar = @id;", datos);
+                comando.Parameters.AddWithValue("@id", idLugar);
+
+                comando.ExecuteNonQuery();
+                datos.Close();
+            }
+        }
+
+
     }
 }

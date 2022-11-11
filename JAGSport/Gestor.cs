@@ -50,8 +50,8 @@ namespace JAGSport
             }
             else
             {
-                File.Copy(txtRuta.Text, Path.Combine(@"C:\Users\marce\Desktop\Proyecto UTU\JAGSport\Publicidad\", Path.GetFileName(txtRuta.Text)), true);
-                label2.Text = "La publicidad ha sido agregada";
+                File.Copy(txtRuta.Text, Path.Combine(@"C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\Publicidad\", Path.GetFileName(txtRuta.Text)), true);
+                
 
                 
 
@@ -83,12 +83,17 @@ namespace JAGSport
         private void button6_Click(object sender, EventArgs e)
         {
             DataTable origendatos;
-            string query = "select * from publicidad1;";
+            string query = "select * from publicidad;";
             MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
             origendatos = new DataTable();
             adapter.Fill(origendatos);
             dataGridView1.DataSource = origendatos;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

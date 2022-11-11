@@ -63,5 +63,22 @@ namespace JAGSport.FormVariable
         {
 
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                eventosPasados evento = new eventosPasados();
+                JAGSport.FormVariable.eventosPasados.idEvento = id;
+                this.Hide();
+                evento.ShowDialog();
+            }
+        }
     }
 }

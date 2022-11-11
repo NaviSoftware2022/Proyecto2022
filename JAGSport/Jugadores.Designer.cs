@@ -38,8 +38,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.teamNombre = new System.Windows.Forms.TextBox();
             this.teamApellido = new System.Windows.Forms.TextBox();
-            this.teamEdad = new System.Windows.Forms.TextBox();
-            this.teamNumCam = new System.Windows.Forms.TextBox();
             this.teamPais = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,7 +46,12 @@
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.zonaCombo = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.teamEdad = new System.Windows.Forms.NumericUpDown();
+            this.teamNumCam = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamEdad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamNumCam)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -155,22 +158,6 @@
             this.teamApellido.Size = new System.Drawing.Size(181, 26);
             this.teamApellido.TabIndex = 10;
             // 
-            // teamEdad
-            // 
-            this.teamEdad.Location = new System.Drawing.Point(183, 220);
-            this.teamEdad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.teamEdad.Name = "teamEdad";
-            this.teamEdad.Size = new System.Drawing.Size(181, 26);
-            this.teamEdad.TabIndex = 11;
-            // 
-            // teamNumCam
-            // 
-            this.teamNumCam.Location = new System.Drawing.Point(183, 266);
-            this.teamNumCam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.teamNumCam.Name = "teamNumCam";
-            this.teamNumCam.Size = new System.Drawing.Size(181, 26);
-            this.teamNumCam.TabIndex = 12;
-            // 
             // teamPais
             // 
             this.teamPais.Location = new System.Drawing.Point(587, 130);
@@ -247,11 +234,37 @@
             this.zonaCombo.Size = new System.Drawing.Size(169, 26);
             this.zonaCombo.TabIndex = 24;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(73, 512);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(395, 20);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "* Si quiere eliminar un Jugador solo hagale doble click *";
+            // 
+            // teamEdad
+            // 
+            this.teamEdad.Location = new System.Drawing.Point(183, 221);
+            this.teamEdad.Name = "teamEdad";
+            this.teamEdad.Size = new System.Drawing.Size(181, 26);
+            this.teamEdad.TabIndex = 26;
+            // 
+            // teamNumCam
+            // 
+            this.teamNumCam.Location = new System.Drawing.Point(183, 269);
+            this.teamNumCam.Name = "teamNumCam";
+            this.teamNumCam.Size = new System.Drawing.Size(181, 26);
+            this.teamNumCam.TabIndex = 27;
+            // 
             // Jugadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 579);
+            this.Controls.Add(this.teamNumCam);
+            this.Controls.Add(this.teamEdad);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.zonaCombo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.timePicker);
@@ -260,8 +273,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.teamPais);
-            this.Controls.Add(this.teamNumCam);
-            this.Controls.Add(this.teamEdad);
             this.Controls.Add(this.teamApellido);
             this.Controls.Add(this.teamNombre);
             this.Controls.Add(this.label9);
@@ -278,6 +289,8 @@
             this.Text = "Jugadores";
             this.Load += new System.EventHandler(this.Jugadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamEdad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamNumCam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,8 +308,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox teamNombre;
         private System.Windows.Forms.TextBox teamApellido;
-        private System.Windows.Forms.TextBox teamEdad;
-        private System.Windows.Forms.TextBox teamNumCam;
         private System.Windows.Forms.TextBox teamPais;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
@@ -305,5 +316,8 @@
         private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox zonaCombo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown teamEdad;
+        private System.Windows.Forms.NumericUpDown teamNumCam;
     }
 }

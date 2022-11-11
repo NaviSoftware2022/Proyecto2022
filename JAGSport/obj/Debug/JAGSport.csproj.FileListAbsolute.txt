@@ -338,3 +338,94 @@ C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.FormVariable.eve
 C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.vistaDeportes.resources
 C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.FormVariable.Deportes.resources
 C:\Users\marce\Desktop\Proyecto UTU\JAGSport\obj\Debug\JAGSport.eventosVIVO.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\JAGSport.exe.config
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\JAGSport.exe
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\JAGSport.pdb
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\MySql.Data.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\Google.Protobuf.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\ZstdNet.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\System.Buffers.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\bin\Debug\MySql.Data.xml
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csprojAssemblyReference.cache
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.exe.config
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Activar.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Admin.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.BackOffice.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.DeporteForm.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Equipos.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventoPasadoBackOffice.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventoProximoBackOffice.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventoSelct.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventosVIVO.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormLogin.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.Deportes.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.eventosPasados.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.eventosProximos.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.PlayerStats.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.Teams.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Gestor.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Home.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Jugadores.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Properties.Resources.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Form2.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaDeportes.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.VistaEquipos.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaEventos.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaJugadores.resources
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csproj.GenerateResource.cache
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csproj.CoreCompileInputs.cache
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csproj.CopyComplete
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.exe
+C:\Users\Joaquin Trujillo\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.pdb
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\JAGSport.exe.config
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\JAGSport.exe
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\JAGSport.pdb
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\MySql.Data.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\Google.Protobuf.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\ZstdNet.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\System.Buffers.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\bin\Debug\MySql.Data.xml
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csprojAssemblyReference.cache
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.exe.config
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Activar.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Admin.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.BackOffice.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.DeporteForm.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Equipos.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventoPasadoBackOffice.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventoProximoBackOffice.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventoSelct.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.eventosVIVO.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormLogin.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.Deportes.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.eventosPasados.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.eventosProximos.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.PlayerStats.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.Teams.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Gestor.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Home.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Jugadores.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Properties.Resources.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.Form2.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaDeportes.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.VistaEquipos.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaEventos.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaJugadores.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csproj.GenerateResource.cache
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csproj.CoreCompileInputs.cache
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.csproj.CopyComplete
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.exe
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.pdb
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.UbicacionForm.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.FormVariable.place.resources
+C:\Users\marce\Desktop\JagSportTesting\JAGSport\obj\Debug\JAGSport.vistaLugar.resources

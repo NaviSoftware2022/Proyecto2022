@@ -37,9 +37,7 @@
             this.btnNor1 = new System.Windows.Forms.Button();
             this.btnMiembro1 = new System.Windows.Forms.Button();
             this.btnAdmin1 = new System.Windows.Forms.Button();
-            this.btnAdmin2 = new System.Windows.Forms.Button();
-            this.btnMiembro2 = new System.Windows.Forms.Button();
-            this.btnNor2 = new System.Windows.Forms.Button();
+            this.eliminar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.correoTxt2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -144,41 +142,17 @@
             this.btnAdmin1.UseVisualStyleBackColor = false;
             this.btnAdmin1.Click += new System.EventHandler(this.btnAdmin1_Click);
             // 
-            // btnAdmin2
+            // eliminar
             // 
-            this.btnAdmin2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAdmin2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmin2.Location = new System.Drawing.Point(255, 450);
-            this.btnAdmin2.Name = "btnAdmin2";
-            this.btnAdmin2.Size = new System.Drawing.Size(91, 28);
-            this.btnAdmin2.TabIndex = 16;
-            this.btnAdmin2.Text = "Usuario Admin";
-            this.btnAdmin2.UseVisualStyleBackColor = false;
-            this.btnAdmin2.Click += new System.EventHandler(this.btnAdmin2_Click);
-            // 
-            // btnMiembro2
-            // 
-            this.btnMiembro2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnMiembro2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMiembro2.Location = new System.Drawing.Point(141, 450);
-            this.btnMiembro2.Name = "btnMiembro2";
-            this.btnMiembro2.Size = new System.Drawing.Size(91, 28);
-            this.btnMiembro2.TabIndex = 15;
-            this.btnMiembro2.Text = "Usuario Pago";
-            this.btnMiembro2.UseVisualStyleBackColor = false;
-            this.btnMiembro2.Click += new System.EventHandler(this.btnMiembro2_Click);
-            // 
-            // btnNor2
-            // 
-            this.btnNor2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnNor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNor2.Location = new System.Drawing.Point(30, 450);
-            this.btnNor2.Name = "btnNor2";
-            this.btnNor2.Size = new System.Drawing.Size(91, 28);
-            this.btnNor2.TabIndex = 14;
-            this.btnNor2.Text = "Usuario Normal\r\n";
-            this.btnNor2.UseVisualStyleBackColor = false;
-            this.btnNor2.Click += new System.EventHandler(this.btnNor2_Click);
+            this.eliminar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eliminar.Location = new System.Drawing.Point(141, 433);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(91, 28);
+            this.eliminar.TabIndex = 15;
+            this.eliminar.Text = "Eliminar";
+            this.eliminar.UseVisualStyleBackColor = false;
+            this.eliminar.Click += new System.EventHandler(this.btnMiembro2_Click);
             // 
             // label6
             // 
@@ -212,10 +186,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.btnAdmin2);
-            this.panel1.Controls.Add(this.btnNor2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnMiembro2);
+            this.panel1.Controls.Add(this.eliminar);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -271,9 +243,7 @@
         private System.Windows.Forms.Button btnNor1;
         private System.Windows.Forms.Button btnMiembro1;
         private System.Windows.Forms.Button btnAdmin1;
-        private System.Windows.Forms.Button btnAdmin2;
-        private System.Windows.Forms.Button btnMiembro2;
-        private System.Windows.Forms.Button btnNor2;
+        private System.Windows.Forms.Button eliminar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox correoTxt2;
         private System.Windows.Forms.Label label7;

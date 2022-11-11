@@ -37,11 +37,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.nameEdit = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.idEdit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +88,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(126, 427);
+            this.button2.Location = new System.Drawing.Point(126, 344);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -113,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 380);
+            this.label3.Location = new System.Drawing.Point(38, 297);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(267, 13);
             this.label3.TabIndex = 7;
@@ -122,64 +117,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 393);
+            this.label4.Location = new System.Drawing.Point(23, 310);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(292, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "* se eliminaran todos los equipos vinculados a este deporte *";
             // 
-            // nameEdit
-            // 
-            this.nameEdit.Location = new System.Drawing.Point(101, 307);
-            this.nameEdit.Name = "nameEdit";
-            this.nameEdit.Size = new System.Drawing.Size(113, 20);
-            this.nameEdit.TabIndex = 11;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(228, 304);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Editar";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(120, 334);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Nuevo Nombre";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 334);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "ID";
-            // 
-            // idEdit
-            // 
-            this.idEdit.Location = new System.Drawing.Point(36, 307);
-            this.idEdit.Name = "idEdit";
-            this.idEdit.Size = new System.Drawing.Size(48, 20);
-            this.idEdit.TabIndex = 9;
-            // 
             // DeporteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 469);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.nameEdit);
-            this.Controls.Add(this.idEdit);
+            this.ClientSize = new System.Drawing.Size(342, 413);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
@@ -209,10 +157,5 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox nameEdit;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox idEdit;
     }
 }

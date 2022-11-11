@@ -35,21 +35,24 @@
             this.Minimizar = new System.Windows.Forms.PictureBox();
             this.Maximizar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.equiposLabel = new System.Windows.Forms.Label();
+            this.eventoLabel = new System.Windows.Forms.Label();
+            this.deporteLabel = new System.Windows.Forms.Label();
             this.btnSesion = new System.Windows.Forms.Button();
             this.btnCuenta = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ubicacionesLabel = new System.Windows.Forms.Label();
             this.reset = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.jugadoresLabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnActivar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerCorreo = new System.Windows.Forms.Timer(this.components);
+            this.idiomaEspañol = new System.Windows.Forms.CheckBox();
+            this.idiomaIngles = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Restaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimizar)).BeginInit();
@@ -128,41 +131,42 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // label4
+            // equiposLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(432, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 29);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Equipos";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.equiposLabel.AutoSize = true;
+            this.equiposLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.equiposLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equiposLabel.Location = new System.Drawing.Point(385, 49);
+            this.equiposLabel.Name = "equiposLabel";
+            this.equiposLabel.Size = new System.Drawing.Size(80, 24);
+            this.equiposLabel.TabIndex = 3;
+            this.equiposLabel.Text = "Equipos";
+            this.equiposLabel.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label2
+            // eventoLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(209, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 29);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Eventos";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.eventoLabel.AutoSize = true;
+            this.eventoLabel.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.eventoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eventoLabel.Location = new System.Drawing.Point(209, 49);
+            this.eventoLabel.Name = "eventoLabel";
+            this.eventoLabel.Size = new System.Drawing.Size(78, 24);
+            this.eventoLabel.TabIndex = 1;
+            this.eventoLabel.Text = "Eventos";
+            this.eventoLabel.UseWaitCursor = true;
+            this.eventoLabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
+            // deporteLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(314, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 29);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Deportes";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.deporteLabel.AutoSize = true;
+            this.deporteLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deporteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deporteLabel.Location = new System.Drawing.Point(293, 49);
+            this.deporteLabel.Name = "deporteLabel";
+            this.deporteLabel.Size = new System.Drawing.Size(86, 24);
+            this.deporteLabel.TabIndex = 2;
+            this.deporteLabel.Text = "Deportes";
+            this.deporteLabel.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnSesion
             // 
@@ -194,17 +198,20 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.panel2.Controls.Add(this.idiomaIngles);
+            this.panel2.Controls.Add(this.idiomaEspañol);
+            this.panel2.Controls.Add(this.ubicacionesLabel);
             this.panel2.Controls.Add(this.reset);
             this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.jugadoresLabel);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.btnActivar);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.btnSesion);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.deporteLabel);
+            this.panel2.Controls.Add(this.eventoLabel);
+            this.panel2.Controls.Add(this.equiposLabel);
             this.panel2.Controls.Add(this.btnCuenta);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 60);
@@ -212,6 +219,18 @@
             this.panel2.Size = new System.Drawing.Size(995, 571);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // ubicacionesLabel
+            // 
+            this.ubicacionesLabel.AutoSize = true;
+            this.ubicacionesLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ubicacionesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ubicacionesLabel.Location = new System.Drawing.Point(576, 49);
+            this.ubicacionesLabel.Name = "ubicacionesLabel";
+            this.ubicacionesLabel.Size = new System.Drawing.Size(114, 24);
+            this.ubicacionesLabel.TabIndex = 14;
+            this.ubicacionesLabel.Text = "Ubicaciones";
+            this.ubicacionesLabel.Click += new System.EventHandler(this.label5_Click);
             // 
             // reset
             // 
@@ -238,17 +257,17 @@
             this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
             // 
-            // label1
+            // jugadoresLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(540, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 29);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Jugadores";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.jugadoresLabel.AutoSize = true;
+            this.jugadoresLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.jugadoresLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jugadoresLabel.Location = new System.Drawing.Point(471, 49);
+            this.jugadoresLabel.Name = "jugadoresLabel";
+            this.jugadoresLabel.Size = new System.Drawing.Size(99, 24);
+            this.jugadoresLabel.TabIndex = 11;
+            this.jugadoresLabel.Text = "Jugadores";
+            this.jugadoresLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox3
             // 
@@ -265,6 +284,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(160, 159);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(679, 331);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -305,6 +325,30 @@
             this.timerCorreo.Interval = 60000;
             this.timerCorreo.Tick += new System.EventHandler(this.timerCorreo_Tick);
             // 
+            // idiomaEspañol
+            // 
+            this.idiomaEspañol.AutoSize = true;
+            this.idiomaEspañol.Checked = true;
+            this.idiomaEspañol.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.idiomaEspañol.Location = new System.Drawing.Point(213, 92);
+            this.idiomaEspañol.Name = "idiomaEspañol";
+            this.idiomaEspañol.Size = new System.Drawing.Size(64, 17);
+            this.idiomaEspañol.TabIndex = 15;
+            this.idiomaEspañol.Text = "Español";
+            this.idiomaEspañol.UseVisualStyleBackColor = true;
+            this.idiomaEspañol.CheckedChanged += new System.EventHandler(this.idiomaEspañol_CheckedChanged);
+            // 
+            // idiomaIngles
+            // 
+            this.idiomaIngles.AutoSize = true;
+            this.idiomaIngles.Location = new System.Drawing.Point(213, 115);
+            this.idiomaIngles.Name = "idiomaIngles";
+            this.idiomaIngles.Size = new System.Drawing.Size(54, 17);
+            this.idiomaIngles.TabIndex = 16;
+            this.idiomaIngles.Text = "Ingles";
+            this.idiomaIngles.UseVisualStyleBackColor = true;
+            this.idiomaIngles.CheckedChanged += new System.EventHandler(this.idiomaIngles_CheckedChanged);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,9 +382,9 @@
         private System.Windows.Forms.PictureBox Maximizar;
         private System.Windows.Forms.PictureBox Minimizar;
         private System.Windows.Forms.PictureBox Restaurar;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label equiposLabel;
+        private System.Windows.Forms.Label eventoLabel;
+        private System.Windows.Forms.Label deporteLabel;
         private System.Windows.Forms.Button btnSesion;
         private System.Windows.Forms.Button btnCuenta;
         private System.Windows.Forms.Panel panel2;
@@ -349,9 +393,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label jugadoresLabel;
         private System.Windows.Forms.Timer timerCorreo;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button reset;
+        private System.Windows.Forms.Label ubicacionesLabel;
+        private System.Windows.Forms.CheckBox idiomaIngles;
+        private System.Windows.Forms.CheckBox idiomaEspañol;
     }
 }

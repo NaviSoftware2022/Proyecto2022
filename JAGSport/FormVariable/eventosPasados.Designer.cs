@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.estadio = new System.Windows.Forms.Label();
             this.fechaEve = new System.Windows.Forms.Label();
             this.team1 = new System.Windows.Forms.Label();
             this.resultado1 = new System.Windows.Forms.Label();
@@ -44,23 +44,25 @@
             this.perdedor2 = new System.Windows.Forms.Label();
             this.ganador2 = new System.Windows.Forms.Label();
             this.empate = new System.Windows.Forms.Label();
+            this.pais = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.jugador1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jugador2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // estadio
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "*Estadio*";
+            this.estadio.AutoSize = true;
+            this.estadio.Location = new System.Drawing.Point(64, 42);
+            this.estadio.Name = "estadio";
+            this.estadio.Size = new System.Drawing.Size(50, 13);
+            this.estadio.TabIndex = 0;
+            this.estadio.Text = "*Estadio*";
+            this.estadio.Click += new System.EventHandler(this.label1_Click);
             // 
             // fechaEve
             // 
             this.fechaEve.AutoSize = true;
-            this.fechaEve.Location = new System.Drawing.Point(168, 56);
+            this.fechaEve.Location = new System.Drawing.Point(187, 42);
             this.fechaEve.Name = "fechaEve";
             this.fechaEve.Size = new System.Drawing.Size(34, 13);
             this.fechaEve.TabIndex = 1;
@@ -70,7 +72,7 @@
             // 
             this.team1.AutoSize = true;
             this.team1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.team1.Location = new System.Drawing.Point(71, 106);
+            this.team1.Location = new System.Drawing.Point(47, 106);
             this.team1.Name = "team1";
             this.team1.Size = new System.Drawing.Size(109, 37);
             this.team1.TabIndex = 2;
@@ -121,7 +123,7 @@
             // horaEve
             // 
             this.horaEve.AutoSize = true;
-            this.horaEve.Location = new System.Drawing.Point(284, 56);
+            this.horaEve.Location = new System.Drawing.Point(327, 42);
             this.horaEve.Name = "horaEve";
             this.horaEve.Size = new System.Drawing.Size(28, 13);
             this.horaEve.TabIndex = 7;
@@ -210,11 +212,21 @@
             this.empate.Text = "Empate";
             this.empate.Visible = false;
             // 
+            // pais
+            // 
+            this.pais.AutoSize = true;
+            this.pais.Location = new System.Drawing.Point(64, 68);
+            this.pais.Name = "pais";
+            this.pais.Size = new System.Drawing.Size(35, 13);
+            this.pais.TabIndex = 16;
+            this.pais.Text = "label3";
+            // 
             // eventosPasados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 562);
+            this.Controls.Add(this.pais);
             this.Controls.Add(this.empate);
             this.Controls.Add(this.ganador2);
             this.Controls.Add(this.perdedor2);
@@ -230,7 +242,7 @@
             this.Controls.Add(this.resultado1);
             this.Controls.Add(this.team1);
             this.Controls.Add(this.fechaEve);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.estadio);
             this.Name = "eventosPasados";
             this.Text = "eventosPasados";
             this.Load += new System.EventHandler(this.eventosPasados_Load);
@@ -243,7 +255,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label estadio;
         private System.Windows.Forms.Label fechaEve;
         private System.Windows.Forms.Label team1;
         private System.Windows.Forms.Label resultado1;
@@ -259,5 +271,6 @@
         private System.Windows.Forms.Label perdedor2;
         private System.Windows.Forms.Label ganador2;
         private System.Windows.Forms.Label empate;
+        private System.Windows.Forms.Label pais;
     }
 }

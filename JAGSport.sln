@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.2017
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JAGSport", "JAGSport\JAGSport.csproj", "{C4B38641-F5C8-4B22-9FFA-6EE33E76CEC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testingg", "testingg\testingg.csproj", "{657BB941-8601-4377-A2C5-7D25A213FBA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C4B38641-F5C8-4B22-9FFA-6EE33E76CEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4B38641-F5C8-4B22-9FFA-6EE33E76CEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4B38641-F5C8-4B22-9FFA-6EE33E76CEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{657BB941-8601-4377-A2C5-7D25A213FBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657BB941-8601-4377-A2C5-7D25A213FBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657BB941-8601-4377-A2C5-7D25A213FBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657BB941-8601-4377-A2C5-7D25A213FBA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

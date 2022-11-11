@@ -25,6 +25,7 @@ namespace JAGSport
         Gestor gestor = new Gestor();
         eventoSelct evento = new eventoSelct();
         eventosVIVO vivo = new eventosVIVO();
+        UbicacionForm place = new UbicacionForm();
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -53,7 +54,6 @@ namespace JAGSport
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.Hide();
             gestor.ShowDialog();
             
         }
@@ -92,6 +92,11 @@ namespace JAGSport
                     break;
                 }
             }
+        }
+
+        private void ubicacion_Click(object sender, EventArgs e)
+        {
+            place.ShowDialog();
         }
     }
 }

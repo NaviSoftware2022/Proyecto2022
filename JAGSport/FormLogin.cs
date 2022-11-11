@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static JAGSport.HomeVIP;
+
 using static JAGSport.Logica;
 using System.Collections;
 
@@ -57,7 +57,7 @@ namespace JAGSport
             UsuarioVIP userV = new UsuarioVIP(textBox1.Text, textBox2.Text, 1);
             UsuarioAdmin userA = new UsuarioAdmin(textBox1.Text, textBox2.Text, "1");
             Home homee = new Home();
-            HomeVIP homeVIP = new HomeVIP();
+            
             BackOffice backOffice = new BackOffice();
             Admin admin = new Admin();
 

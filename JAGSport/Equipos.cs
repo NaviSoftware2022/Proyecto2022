@@ -97,52 +97,66 @@ namespace JAGSport
             string nameTeam = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
             string zona = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
 
-            List<string> listaIdEvento = new List<string>();
-            Equipo team = new Equipo(nameTeam, zona);
-            string id1 = team.ID();
-
-            Integra gameplayer = new Integra(0, Convert.ToInt32(id1));
-            string idJugador = gameplayer.mostrarJugador();
-
-            Juega game = new Juega(id1, "");
-            listaIdEvento = team.idEvento(Convert.ToInt32(id1));   
-            
-            foreach (string a in listaIdEvento)
+            if (nameTeam == "")
             {
-                // Eliminar Participa (Relacion Evento - Deporte - Equipos)
-                Participa participa = new Participa(0, Convert.ToInt32(a), 0);
-                participa.eliminarParticipa();
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                List<string> listaIdEvento = new List<string>();
+                Equipo team = new Equipo(nameTeam, zona);
+                string id1 = team.ID();
 
-                // Eliminar Eventos 
-                Evento evento = new Evento();
-                evento.eliminarEvento(Convert.ToInt32(a));
+                Integra gameplayer = new Integra(0, Convert.ToInt32(id1));
+                string idJugador = gameplayer.mostrarJugador();
+
+                Juega game = new Juega(id1, "");
+                listaIdEvento = team.idEvento(Convert.ToInt32(id1));
+
+                foreach (string a in listaIdEvento)
+                {
+                    // Eliminar Participa (Relacion Evento - Deporte - Equipos)
+                    Participa participa = new Participa(0, Convert.ToInt32(a), 0);
+                    participa.eliminarParticipa();
+
+                    // Eliminar Eventos 
+                    Evento evento = new Evento();
+                    evento.eliminarEvento(Convert.ToInt32(a));
+                }
+
+
+                // Eliminar Integra (Relacion Equipo - Jugador)
+                Integra integra = new Integra();
+                integra.eliminarIntegraEquipo(id1);
+
+
+                // Eliminar Jugadores con ese Equipo
+                Jugador player = new Jugador();
+                player.eliminarJugadorID(idJugador);
+
+                // Eliminar Juega (Relacion Deporte - Equipo)
+                game.eliminarJuega();
+
+                // Eliminar Equipo
+                team.eliminarEquipo();
+
+                DataTable origendatos;
+                string query = "select nombreEquipo, zona, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
+                MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+                origendatos = new DataTable();
+                adapter.Fill(origendatos);
+                dataGridView1.DataSource = origendatos;
+
+                MessageBox.Show("Equipo eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+          
+        }
 
-            // Eliminar Integra (Relacion Equipo - Jugador)
-            Integra integra = new Integra();
-            integra.eliminarIntegraEquipo(id1);
+        private void label5_Click(object sender, EventArgs e)
+        {
 
-
-            // Eliminar Jugadores con ese Equipo
-            Jugador player = new Jugador();
-            player.eliminarJugadorID(idJugador);
-
-            // Eliminar Juega (Relacion Deporte - Equipo)
-            game.eliminarJuega();
-
-            // Eliminar Equipo
-            team.eliminarEquipo();
-
-            DataTable origendatos;
-            string query = "select nombreEquipo, zona, nombreDeporte from Equipo a, Deporte b, Juega c where a.idEquipo = c.idEquipo and b.idDeporte = c.idDeporte";
-            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
-            origendatos = new DataTable();
-            adapter.Fill(origendatos);
-            dataGridView1.DataSource = origendatos;
-
-            MessageBox.Show("Equipo eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

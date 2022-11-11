@@ -46,21 +46,43 @@ namespace JAGSport
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Usuario user = new Usuario(textBox1.Text, textBox2.Text);
-            UsuarioVIP userV = new UsuarioVIP(textBox1.Text, textBox2.Text, 1);
-
+            Usuario user = new Usuario(textBox1.Text, "");
+            UsuarioVIP userV = new UsuarioVIP(textBox1.Text, "", 1);
+            UsuarioAdmin admin = new UsuarioAdmin(textBox1.Text, "", "");
             Home home = new Home();
 
-            if(user.autenticacion())
+            if(textBox1.Text.Trim() != "")
             {
-                user.eliminary();
-                userV.agregar();
-                userV.autenticacionUser();
-                correo = textBox1.Text;
-                resultado = 1;
-
-                this.Hide();
-    
+                if(user.autenticacion())
+                {
+                    if(user.autenticacionUser())
+                    {
+                        if(!userV.autenticacion() && !admin.autenticacion())
+                        {
+                            user.eliminary();
+                            userV.agregar();
+                            correo = textBox1.Text;
+                            resultado = 1;
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERROR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existe esa cuenta!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Rellene campos!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

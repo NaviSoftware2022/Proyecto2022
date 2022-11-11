@@ -25,7 +25,6 @@ namespace JAGSport.FormVariable
         private void eventosPasados_Load(object sender, EventArgs e)
         {
 
-
             datos.Open();
             MySqlCommand comando = new MySqlCommand("select fecha ,hora, nombreDeporte, resultado1, resultado2, equipo1, equipo2 from Evento where idEvento = @id", datos);
             comando.Parameters.AddWithValue("@id", idEvento);
@@ -33,7 +32,6 @@ namespace JAGSport.FormVariable
 
             int resultado1V = 0, resultado2V = 0;
             string team1V = "", team2V = "";
-
 
             if (lector.Read())
             {
@@ -64,6 +62,20 @@ namespace JAGSport.FormVariable
             }
 
             datos.Close();
+
+            // DATOS LUGAR
+            List<string> listLugar = new List<string>();
+            Pasa pasa = new Pasa("", idEvento);
+            string idLugar = pasa.obtenerIDLugar();
+
+            Ubicacion lugar = new Ubicacion();
+            listLugar = lugar.mostrarDatosLugar(idLugar);
+
+            estadio.Text = listLugar[0];
+            pais.Text = listLugar[1];
+
+
+
 
             List<string> list = new List<string>();
             Participa participa = new Participa(0, Convert.ToInt32(idEvento), 0);
@@ -102,18 +114,38 @@ namespace JAGSport.FormVariable
         {
             string id = jugador1.CurrentRow.Cells[0].Value.ToString();
 
-            PlayerStats player = new PlayerStats();
-            JAGSport.FormVariable.PlayerStats.idPJ = id;
-            player.ShowDialog();
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                PlayerStats player = new PlayerStats();
+                JAGSport.FormVariable.PlayerStats.idPJ = id;
+                player.ShowDialog();
+            }
         }
 
         private void jugador2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string id = jugador2.CurrentRow.Cells[0].Value.ToString();
 
-            PlayerStats player = new PlayerStats();
-            JAGSport.FormVariable.PlayerStats.idPJ = id;
-            player.ShowDialog();
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                PlayerStats player = new PlayerStats();
+                JAGSport.FormVariable.PlayerStats.idPJ = id;
+                this.Hide();
+                player.ShowDialog();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

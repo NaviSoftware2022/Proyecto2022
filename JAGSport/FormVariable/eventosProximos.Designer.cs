@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.team1 = new System.Windows.Forms.Label();
             this.fechaEve = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -75,7 +74,7 @@
             // horaEve
             // 
             this.horaEve.AutoSize = true;
-            this.horaEve.Location = new System.Drawing.Point(257, 24);
+            this.horaEve.Location = new System.Drawing.Point(206, 21);
             this.horaEve.Name = "horaEve";
             this.horaEve.Size = new System.Drawing.Size(28, 13);
             this.horaEve.TabIndex = 23;
@@ -105,7 +104,7 @@
             // 
             this.team1.AutoSize = true;
             this.team1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.team1.Location = new System.Drawing.Point(44, 74);
+            this.team1.Location = new System.Drawing.Point(12, 74);
             this.team1.Name = "team1";
             this.team1.Size = new System.Drawing.Size(109, 37);
             this.team1.TabIndex = 18;
@@ -114,20 +113,11 @@
             // fechaEve
             // 
             this.fechaEve.AutoSize = true;
-            this.fechaEve.Location = new System.Drawing.Point(141, 24);
+            this.fechaEve.Location = new System.Drawing.Point(90, 21);
             this.fechaEve.Name = "fechaEve";
             this.fechaEve.Size = new System.Drawing.Size(34, 13);
             this.fechaEve.TabIndex = 17;
             this.fechaEve.Text = "fecha";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "*Estadio*";
             // 
             // label3
             // 
@@ -164,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 622);
+            this.ClientSize = new System.Drawing.Size(625, 573);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -176,7 +166,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.team1);
             this.Controls.Add(this.fechaEve);
-            this.Controls.Add(this.label1);
             this.Name = "eventosProximos";
             this.Text = "eventosProximos";
             this.Load += new System.EventHandler(this.eventosProximos_Load);
@@ -196,7 +185,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label team1;
         private System.Windows.Forms.Label fechaEve;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;

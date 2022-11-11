@@ -25,11 +25,13 @@ namespace JAGSport
         eventosPasados eventoP = new eventosPasados();
         vistaEventos eventos = new vistaEventos();
         vistaDeportes deporte = new vistaDeportes();
+        vistaLugar place = new vistaLugar();
 
-        
+
 
         public static string datosLog;
         public static int membresia;
+        public static int idioma;
         MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root");
 
         public Home()
@@ -142,8 +144,7 @@ namespace JAGSport
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            team.Show();
+            team.ShowDialog();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -182,6 +183,7 @@ namespace JAGSport
             else if(membresia == 2)
             {
                 pictureBox3.Visible = false;
+                pictureBox4.Visible = false;
                 btnActivar.Visible = false;
                 btnSesion.Visible = false;
                 btnCuenta.Visible = true;
@@ -191,6 +193,21 @@ namespace JAGSport
                 btnCuenta.Visible = false;
                 btnSesion.Visible = true;
                 btnActivar.Visible = false;
+            }
+
+            if (idioma == 1)
+            {
+
+                español();
+            }
+            else if (idioma == 2)
+            {
+
+                ingles();
+            }
+            else
+            {
+                español();
             }
         }
 
@@ -275,7 +292,7 @@ namespace JAGSport
                             StringBuilder mensaje = new StringBuilder();
                             mensaje.Append("JAGSport - Notificacion de Evento");
                             string Error = "";
-                            string a = correos.EnviarCorreo(mensaje, DateTime.Now, "navisoftwareClient@gmail.com", listCorreo[z], "correo de prueba", equipo1E, equipo2E, horaE, out Error);
+                            string a = correos.EnviarCorreo(mensaje, DateTime.Now, "navisoftwareClient@gmail.com", listCorreo[z], "Subscripcion Evento", equipo1E, equipo2E, horaE, out Error);
 
                         }
                         usuarios.eliminarsub();
@@ -308,6 +325,57 @@ namespace JAGSport
         private void ResultadoEvento_Tick(object sender, EventArgs e)
         {
             
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            place.ShowDialog();
+        }
+
+        private void idiomaIngles_CheckedChanged(object sender, EventArgs e)
+        {
+            if(idiomaIngles.Checked)
+            {
+                Home.idioma = 2;
+                Home homeIngles = new Home();
+                this.Hide();
+                homeIngles.ShowDialog();
+            }
+        }
+
+        public void ingles()
+        {
+            eventoLabel.Text = "Events";
+            deporteLabel.Text = "Sports";
+            equiposLabel.Text = "Teams";
+            jugadoresLabel.Text = "Players";
+            ubicacionesLabel.Text = "Locations";
+            btnSesion.Text = "Log in";
+            reset.Text = "Refresh";
+        }
+
+        public void español()
+        {
+            eventoLabel.Text = "Eventos";
+            deporteLabel.Text = "Deportes";
+            equiposLabel.Text = "Equipos";
+            jugadoresLabel.Text = "JUgadores";
+            ubicacionesLabel.Text = "Ubicaciones";
+            btnSesion.Text = "Iniciar Sesion";
+            reset.Text = "Actualizar";
+        }
+
+        private void idiomaEspañol_CheckedChanged(object sender, EventArgs e)
+        {
+            if (idiomaEspañol.Checked)
+            {
+                Home.idioma = 1;
+                Home homeEspañol = new Home();
+                this.Hide();
+                homeEspañol.ShowDialog();
+
+                idiomaIngles.Checked = false;
+            }
         }
     }
 }

@@ -47,10 +47,17 @@ namespace JAGSport
         {
             string idEvento = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
 
-            JAGSport.FormVariable.eventosPasados.idEvento = idEvento;
-            this.Hide();
-            eventoP.ShowDialog();
-            
+            if (idEvento == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                JAGSport.FormVariable.eventosPasados.idEvento = idEvento;
+                this.Hide();
+                eventoP.ShowDialog();
+            }
+
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -62,9 +69,16 @@ namespace JAGSport
         {
             string idEvento = Convert.ToString(dataGridView2.CurrentRow.Cells[0].Value);
 
-            JAGSport.FormVariable.eventosProximos.idEvento = idEvento;
-            this.Hide();
-            eventoF.ShowDialog();
+            if (idEvento == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            { 
+                JAGSport.FormVariable.eventosProximos.idEvento = idEvento;
+                this.Hide();
+                eventoF.ShowDialog();
+             }
         }
     }
 }

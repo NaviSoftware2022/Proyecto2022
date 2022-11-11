@@ -22,9 +22,11 @@ namespace JAGSport
         Equipo equipo = new Equipo();
         MySqlConnection datos = new MySqlConnection("Server=127.0.0.1; Database=jags; Uid=root; password=root");
         DateTime ahora = DateTime.Now.Date;
+    
 
         public void Agregar ()
         {
+            fechaEvento.Value = fechaEvento.Value.Date;
             EventoProximo evento = new EventoProximo(fechaEvento.Value, horaEvento.Value, listaDeportes.SelectedItem.ToString(), listaEquipo1.SelectedItem.ToString(), listaEquipo2.SelectedItem.ToString());
             if (!evento.autenticacionEvento())
             {
@@ -87,7 +89,8 @@ namespace JAGSport
                listaEquipo2.SelectedItem != null &&
                zonaCombo1.SelectedItem != null &&
                zonaCombo2.SelectedItem != null)
-            {         
+            {     
+                
                 if(fechaEvento.Value == ahora || fechaEvento.Value > ahora)
                 {
                     if(listaEquipo1.SelectedItem.ToString() != listaEquipo2.SelectedItem.ToString())
@@ -113,10 +116,12 @@ namespace JAGSport
 
         private void eventoProximoBackOffice_Load(object sender, EventArgs e)
         {
+            horaEvento.Format = DateTimePickerFormat.Time;
             List<string> listaDeporte = new List<string>();
             List<string> listaEquipo = new List<string>();
             listaDeporte = deporte.mostrarDeporte();
             listaEquipo = equipo.mostrarEquipo();
+            this.fechaEvento.Value = DateTime.Now.AddDays(1);
 
             listaDeportes.Items.Clear();
             foreach (string a in listaDeporte)
@@ -135,28 +140,38 @@ namespace JAGSport
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idEvento = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            string idEvento1 = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
-            ParticipaFijado participa1 = new ParticipaFijado(0, idEvento, 0);
-            participa1.eliminarParticipa();
-            ParticipaFijado participa2 = new ParticipaFijado(0, idEvento, 0);
-            participa2.eliminarParticipa();
+            if (idEvento1 == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int idEvento = Convert.ToInt32(idEvento1);
 
-            suscribe sub = new suscribe("", idEvento.ToString());
-            sub.eliminarsub();
-    
-            EventoProximo evento = new EventoProximo();
-            evento.eliminarEvento(idEvento);
+                ParticipaFijado participa1 = new ParticipaFijado(0, idEvento, 0);
+                participa1.eliminarParticipa();
+                ParticipaFijado participa2 = new ParticipaFijado(0, idEvento, 0);
+                participa2.eliminarParticipa();
 
-            DataTable origendatos;
-            string query = "select idEvento, fecha, hora, equipo1, equipo2, nombreDeporte from Eventofijado";
-            MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
-            origendatos = new DataTable();
-            adapter.Fill(origendatos);
-            dataGridView1.DataSource = origendatos;
+                suscribe sub = new suscribe("", idEvento.ToString());
+                sub.eliminarsub();
 
-            MessageBox.Show("Evento eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                EventoProximo evento = new EventoProximo();
+                evento.eliminarEvento(idEvento);
+
+                DataTable origendatos;
+                string query = "select idEvento, fecha, hora, equipo1, equipo2, nombreDeporte from Eventofijado";
+                MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
+                origendatos = new DataTable();
+                adapter.Fill(origendatos);
+                dataGridView1.DataSource = origendatos;
+
+                MessageBox.Show("Evento eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
 
         private void listaEquipo1_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +214,8 @@ namespace JAGSport
         {
             listaEquipo1.Items.Clear();
             listaEquipo2.Items.Clear();
+            listaEquipo1.ResetText();
+            listaEquipo2.ResetText();
 
             List<string> lista = new List<string>();
             listaEquipo1.Enabled = true;

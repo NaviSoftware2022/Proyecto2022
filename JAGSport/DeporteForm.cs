@@ -82,103 +82,83 @@ namespace JAGSport
         {
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            Deporte deporte = new Deporte(name);
-            Juega game = new Juega("", id);
-            Jugador player = new Jugador();
 
-            List<string> listaIdEvento = new List<string>();
-            List<string> listaEquipos = new List<string>();
-
-
-            listaEquipos = game.mostrarEquipos();
-
-
-            Integra integra = new Integra();
-            
-            
-            string idEquipo = team.ID();
-            listaIdEvento = deporte.idEvento(Convert.ToInt32(id));
-
-
-            // Eliminar Participa (Relacion Evento - Deporte - Equipos)
-            Participa participa = new Participa(0, 0, Convert.ToInt32(id));
-            participa.eliminarParticipaDeporte();
-
-            // Eliminar Eventos 
-            foreach (string a in listaIdEvento)
+            if (id == "")
             {
-                Evento evento = new Evento();
-                evento.eliminarEvento(Convert.ToInt32(a));
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            List<string> listJugadores = new List<string>();
-            List<string> listJugadoresID = new List<string>();
-
-
-            foreach (string a in listaEquipos)
+            else
             {
-                Integra relacionJE = new Integra(0, Convert.ToInt32(a));
-                listJugadores = relacionJE.mostrarJugadores();
-                foreach(string b in listJugadores)
+                Deporte deporte = new Deporte(name);
+                Juega game = new Juega("", id);
+                Jugador player = new Jugador();
+
+                List<string> listaIdEvento = new List<string>();
+                List<string> listaEquipos = new List<string>();
+
+                listaEquipos = game.mostrarEquipos();
+
+                Integra integra = new Integra();
+
+                string idEquipo = team.ID();
+                listaIdEvento = deporte.idEvento(Convert.ToInt32(id));
+
+                // Eliminar Participa (Relacion Evento - Deporte - Equipos)
+                Participa participa = new Participa(0, 0, Convert.ToInt32(id));
+                participa.eliminarParticipaDeporte();
+
+                // Eliminar Eventos 
+                foreach (string a in listaIdEvento)
                 {
-                    listJugadoresID.Add(b);
+                    Evento evento = new Evento();
+                    evento.eliminarEvento(Convert.ToInt32(a));
                 }
+
+                List<string> listJugadores = new List<string>();
+                List<string> listJugadoresID = new List<string>();
+
+                foreach (string a in listaEquipos)
+                {
+                    Integra relacionJE = new Integra(0, Convert.ToInt32(a));
+                    listJugadores = relacionJE.mostrarJugadores();
+                    foreach (string b in listJugadores)
+                    {
+                        listJugadoresID.Add(b);
+                    }
+                }
+
+                // Eliminar Integra (Relacion Equipo - Jugador)
+                integra.eliminarIntegraEquipo(idEquipo);
+
+                // Eliminar Jugadores con NombreEquipo
+                foreach (string c in listJugadoresID)
+                {
+                    player.eliminarJugadorID(c);
+                }
+
+                // ELiminar Juega (Relacion Deporte - Equipo)
+                game.eliminarJuegaDeporte();
+
+                // Eliminar Equipos
+                foreach (string a in listaEquipos)
+                {
+                    Equipo team = new Equipo();
+                    team.eliminarEquipoID(a);
+                }
+                // Eliminar Deporte
+                deporte.eliminarDeporte(id);
+
+
+                tabla();
+
+                MessageBox.Show("Deporte eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            // Eliminar Integra (Relacion Equipo - Jugador)
-            integra.eliminarIntegraEquipo(idEquipo);
-
-            // Eliminar Jugadores con NombreEquipo
-            foreach(string c in listJugadoresID)
-            {
-                player.eliminarJugadorID(c);
-            }
-
-            // ELiminar Juega (Relacion Deporte - Equipo)
-            game.eliminarJuegaDeporte();
-
-            // Eliminar Equipos
-            foreach(string a in listaEquipos)
-            {
-                Equipo team = new Equipo();
-                team.eliminarEquipoID(a);
-            }
-            // Eliminar Deporte
-            deporte.eliminarDeporte(id);
-
-
-            tabla();
-
-            MessageBox.Show("Deporte eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if(idEdit.Text.Trim() != "" && nameEdit.Text.Trim() != "")
-            {
-                Deporte deporte = new Deporte(nameEdit.Text);
-                bool condicion = deporte.editarDeporte(idEdit.Text);
-
-                if(!condicion)
-                {
-                    MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } else
-                {
-                    MessageBox.Show("Accion realizada correctamente!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    idEdit.Text = "";
-                    nameEdit.Text = "";
-                    tabla();
-                } 
-            } 
-            else
-            {
-                MessageBox.Show("Rellene campos!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }

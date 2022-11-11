@@ -23,15 +23,34 @@ namespace JAGSport
         public static string idEvento;
         string team1V = "", team2V = "", fechaEve = "", horaEve = "", deporteEve = "";
 
+        private void listaLugarBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            paisComboBox.ResetText();
+            paisComboBox.Items.Clear();
+
+            paisComboBox.Enabled = true;
+
+            string nombreLugar = listaLugarBox.SelectedItem.ToString();
+            List<string> list = new List<string>();
+
+            Ubicacion place = new Ubicacion(nombreLugar, "");
+            list = place.mostrarPais();
+
+            foreach (string a in list)
+            {
+                paisComboBox.Items.Add(a);
+            }
+        }
+
         private void eventosVIVO_Load(object sender, EventArgs e)
         {
+            resultado1.Value = 0;
+            resultado2.Value = 0;
+
             datos.Open();
             MySqlCommand comando = new MySqlCommand("select fecha ,hora, nombreDeporte, equipo1, equipo2 from Eventofijado where idEvento = @id", datos);
             comando.Parameters.AddWithValue("@id", idEvento);
             MySqlDataReader lector = comando.ExecuteReader();
-
-            
-
 
             if (lector.Read())
             {
@@ -43,8 +62,20 @@ namespace JAGSport
                 team1V = Convert.ToString(lector["equipo1"]);
                 team2V = Convert.ToString(lector["equipo2"]);
             }
-
             datos.Close();
+
+            listaLugarBox.ResetText();
+            listaLugarBox.Items.Clear();
+            paisComboBox.ResetText();
+            paisComboBox.Items.Clear();
+            List<string> listaLugar = new List<string>();
+            Ubicacion place = new Ubicacion();
+            listaLugar = place.mostrarNombreLugar();
+
+            foreach (string a in listaLugar)
+            {
+                listaLugarBox.Items.Add(a);
+            }
 
             DataTable origendatos;
             MySqlCommand cmdSelect = new MySqlCommand("select * from eventofijado where idEvento = @id;", datos);
@@ -86,11 +117,22 @@ namespace JAGSport
             Evento evento = new Evento(Convert.ToDateTime(fechaEve), Convert.ToDateTime(horaEve), deporteEve, r1, r2, team1V, team2V);
             evento.agregarEvento();
 
+            int idEventoNew = Convert.ToInt32(evento.ID());
+
             // Ingresar Participa
-            Participa participa1 = new Participa(idTeam1, Convert.ToInt32(idEvento), idSport);
-            Participa participa2 = new Participa(idTeam2, Convert.ToInt32(idEvento), idSport);
+            Participa participa1 = new Participa(idTeam1, Convert.ToInt32(idEventoNew), idSport);
+            Participa participa2 = new Participa(idTeam2, Convert.ToInt32(idEventoNew), idSport);
             participa1.agregarParticipa();
             participa2.agregarParticipa();
+
+            Ubicacion place = new Ubicacion(listaLugarBox.SelectedItem.ToString(), paisComboBox.SelectedItem.ToString());
+            int idLugar = place.ID();
+
+            Pasa pasa = new Pasa(idLugar.ToString(), idEventoNew.ToString());
+            pasa.agregarPasa();
+
+            MessageBox.Show("Accion completada con Exito!!", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
 
         }
     }

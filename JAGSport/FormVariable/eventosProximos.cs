@@ -103,18 +103,34 @@ namespace JAGSport.FormVariable
         {
             string id = jugador2.CurrentRow.Cells[0].Value.ToString();
 
-            PlayerStats player = new PlayerStats();
-            JAGSport.FormVariable.PlayerStats.idPJ = id;
-            player.ShowDialog();
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                PlayerStats player = new PlayerStats();
+                JAGSport.FormVariable.PlayerStats.idPJ = id;
+                this.Hide();
+                player.ShowDialog();
+            }
         }
 
         private void jugador1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string id = jugador1.CurrentRow.Cells[0].Value.ToString();
 
-            PlayerStats player = new PlayerStats();
-            JAGSport.FormVariable.PlayerStats.idPJ = id;
-            player.ShowDialog();
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                PlayerStats player = new PlayerStats();
+                JAGSport.FormVariable.PlayerStats.idPJ = id;
+                this.Hide();
+                player.ShowDialog();
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace JAGSport
         private void vistaJugadores_Load(object sender, EventArgs e)
         {
             DataTable origendatos;
-            string query = "select nombre, equipo, idJugador from Jugador";
+            string query = "select idJugador, nombre, equipo, idJugador from Jugador";
             MySqlCommand cmdSelect = new MySqlCommand(string.Format(query), datos);
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmdSelect);
             origendatos = new DataTable();
@@ -39,10 +39,18 @@ namespace JAGSport
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            JAGSport.FormVariable.PlayerStats.idPJ = id;
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
-            player.ShowDialog();
+            if (id == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                JAGSport.FormVariable.PlayerStats.idPJ = id;
+                player.ShowDialog();
+            }
+            
 
 
 

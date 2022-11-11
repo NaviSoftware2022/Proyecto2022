@@ -42,10 +42,17 @@ namespace JAGSport
             string idT = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             string nameT = dataGridView1.CurrentRow.Cells[1].Value.ToString();
 
-            JAGSport.FormVariable.Teams.name = nameT;
-            JAGSport.FormVariable.Teams.id = idT;
+            if (idT == "" || nameT == "")
+            {
+                MessageBox.Show("Parece que hubo un problema intentalo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                JAGSport.FormVariable.Teams.name = nameT;
+                JAGSport.FormVariable.Teams.id = idT;
 
-            team.ShowDialog();
+                team.ShowDialog();
+            }
         }
     }
 }
