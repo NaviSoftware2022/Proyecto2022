@@ -212,3 +212,25 @@ select a.nombreEquipo, sum(b.resultado) from equipo a, evento b where a.nombreEq
 select a.nombreEquipo, sum(b.resultado2) from equipo a, evento b where a.nombreEquipo= b.equipo2 and a.zona="uruguay" group by a.nombreEquipo having (sum(b.resultado2)>any (select sum(b.resultado2) from equipo a, evento b where a.nombreEquipo=b.equipo2 and a.zona="argentina") and sum(b.resultado2)>all(select sum(b.resultado2) from equipo a, evento b where a.nombreEquipo= b.equipo2 and a.zona="brasil"));
 
 -- Debido a que nuestra base de datos esta hecha de forma de que se registren los datos de los resultados dependiendo de si el equipo se registro en equipo1 o equipo2 y no por el nombre del equipo decidimos hacer la consulta para el caso de equipo 1 y para el equipo 2 por separado.
+
+reate user 'admin'@"%" identified by '12345admin';
+create user 'cuentas'@"%" identified by '12345cuentas';
+create user 'publicidad'@"%" identified by '12345publi';
+create user 'eventos'@"%" identified by '12345eventos';
+
+grant all privileges on . to admin@"%"; 
+grant select, insert, update on JAGS.Usuario, UsuarioNoM, Miembro, Admin, Tiene, Suscribe to cuentas@"%";
+grant select, insert, update on JAGS.Publicidad to publicidad@"%";
+grant select, insert, update on JAGS.Deporte, Distancia, Equipo, Evento, Jugador, Lugar, Puntuacion, Tiempo, Integra, Participa, Pasa, Realiza to eventos@"%";
+Create user SISRDadmin@localhost identified by 'root';
+GRANT ALL ON jags.* TO SISRDadmin@localhost;
+Create user Admin@localhost identified by 'admin123';
+Grant all privileges on . to Admin@localhost;
+Create user Usuario@localhost identified by 'contrasenia';
+grant select on * to Usuario@localhost;
+grant alter on * to Usuario@localhost;
+revoke alter on * from Usuario@localhost;
+Create user GestorUsuarios@localhost identified by 'Gestor';
+grant all privileges on miembro.* to GestorUsuarios@localhost;
+grant all privileges on admin.* to GestorUsuarios@localhost;
+grant all privileges on usuario.* to GestorUsuario@localhost;
